@@ -115,6 +115,7 @@ int main()
 	// Set up the data for each vertex of the triangle
 	Vertex vertices[24];
 
+	// --- Room ---
 	// Front Square
 	vertices[0].x = -0.5f;			vertices[0].y = -0.5f;			vertices[0].z = -0.5f;
 	vertices[0].r = 255;			vertices[0].g = 255;			vertices[0].b = 255;
@@ -355,7 +356,7 @@ int main()
 
 		// Uniform variables for point light
 		GLint lightPositionUniformLocation = glGetUniformLocation(program, "lightPosition");
-		glUniform3f(lightPositionUniformLocation, 0.0f, 0.0f, 3.0f);
+		glUniform3f(lightPositionUniformLocation, 0.0f, 0.0f, 55.0f);
 
 		GLint lightAmbientUniformLocation = glGetUniformLocation(program, "lightAmbient");
 		glUniform3f(lightAmbientUniformLocation, 0.2f, 0.2f, 0.2f);
@@ -373,19 +374,17 @@ int main()
 		GLint shininessUniformLocation = glGetUniformLocation(program, "shininess");
 		glUniform1f(shininessUniformLocation, 8.0f);
 
-		// DIE 1
+		// --- Room ---
 
 		// Projection Matrix
 		glm::mat4 proj = glm::perspective(glm::radians(90.0f), (float)windowWidth / (float)windowHeight, 0.1f, 100.0f);
 
 		// View Matrix
-		glm::vec3 cameraPosition = glm::vec3 (0.5f, 0.0f, 1.25f);
+		glm::vec3 cameraPosition = glm::vec3 (0.0f, 0.0f, 55.0f);
 		glm::mat4 view = glm::lookAt(cameraPosition, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 		// Model Matrix
-		glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		glm::mat4 model = glm::scale(glm::mat4(1.0f), glm::vec3(50.0f, 50.0f, 50.0f));
 
 		// Normal Matrix
 		glm::mat4 normal = glm::transpose(glm::inverse(model));
@@ -404,106 +403,6 @@ int main()
 		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
 
 		GLint normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
-		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
-
-		// Draw the vertices using triangle primitives
-		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 4, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 8, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 12, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 16, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 20, 4);
-
-		// DIE 2
-
-		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
-		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
-
-		// Normal Matrix
-		normal = glm::transpose(glm::inverse(model));
-
-		// Uniform variables
-		modelUniformLocation = glGetUniformLocation(program, "model");
-		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
-
-		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
-		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
-
-		// Draw the vertices using triangle primitives
-		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 4, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 8, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 12, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 16, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 20, 4);
-
-		// DIE 3
-
-		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-0.3f, -1.0f, -0.2f));
-		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-
-		// Normal Matrix
-		normal = glm::transpose(glm::inverse(model));
-
-		// Uniform variables
-		modelUniformLocation = glGetUniformLocation(program, "model");
-		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
-
-		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
-		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
-
-		// Draw the vertices using triangle primitives
-		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 4, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 8, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 12, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 16, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 20, 4);
-
-		// DIE 4
-
-		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f+(sin((float)glfwGetTime())*0.8f), 0.0f+(cos((float)glfwGetTime())*0.8f)));
-		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(1.0f, 1.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-
-		// Normal Matrix
-		normal = glm::transpose(glm::inverse(model));
-
-		// Uniform variables
-		modelUniformLocation = glGetUniformLocation(program, "model");
-		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
-
-		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
-		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
-
-		// Draw the vertices using triangle primitives
-		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 4, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 8, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 12, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 16, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 20, 4);
-
-		// DIE 5
-
-		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-0.3f+(sin((float)glfwGetTime())*0.2f), -1.0f, -0.2f+(cos((float)glfwGetTime())*0.2f)));
-		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-
-		// Normal Matrix
-		normal = glm::transpose(glm::inverse(model));
-
-		// Uniform variables
-		modelUniformLocation = glGetUniformLocation(program, "model");
-		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
-
-		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
 		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
 
 		// Draw the vertices using triangle primitives
