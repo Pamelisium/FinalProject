@@ -52,6 +52,16 @@ GLuint CreateShaderFromSource(const GLuint& shaderType, const std::string& shade
 void FramebufferSizeChangedCallback(GLFWwindow* window, int width, int height);
 
 /// <summary>
+/// Function for handling the event when a key is pressed.
+/// </summary>
+/// <param name="window">Reference to the window</param>
+/// <param name="key">Keyboard key</param>
+/// <param name="scancode">Platform-specific scancode</param>
+/// <param name="action">Action done on key</param>
+/// <param name="mods">Modifier bits</param>
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+/// <summary>
 /// Struct containing data about a vertex
 /// </summary>
 struct Vertex
@@ -61,6 +71,13 @@ struct Vertex
 	GLfloat u, v;		// UV Coordinates
 	GLfloat nx, ny, nz; // Normal Vector
 };
+
+/// <summary>
+/// Camera variables
+/// </summary>
+glm::vec3 cameraPosition = glm::vec3(0.0f, -15.0f, 0.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
 /// <summary>
 /// Main function.
@@ -102,6 +119,9 @@ int main()
 
 	// Register the callback function that handles when the framebuffer size has changed
 	glfwSetFramebufferSizeCallback(window, FramebufferSizeChangedCallback);
+
+	// Register the callback function that handles when a key is pressed
+	glfwSetKeyCallback(window, KeyCallback);
 
 	// Tell GLAD to load the OpenGL function pointers
 	if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
@@ -374,14 +394,13 @@ int main()
 		GLint shininessUniformLocation = glGetUniformLocation(program, "shininess");
 		glUniform1f(shininessUniformLocation, 8.0f);
 
-		// --- Room ---
-
 		// Projection Matrix
-		glm::mat4 proj = glm::perspective(glm::radians(90.0f), (float)windowWidth / (float)windowHeight, 0.1f, 100.0f);
+		glm::mat4 proj = glm::perspective(glm::radians(60.0f), (float)windowWidth / (float)windowHeight, 0.1f, 100.0f);
 
 		// View Matrix
-		glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, -10.0f);
-		glm::mat4 view = glm::lookAt(cameraPosition, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + cameraFront, cameraUp);
+
+		// --- Room ---
 
 		// Model Matrix
 		glm::mat4 model = glm::scale(glm::mat4(1.0f), glm::vec3(50.0f, 50.0f, 50.0f));
@@ -541,4 +560,29 @@ void FramebufferSizeChangedCallback(GLFWwindow* window, int width, int height)
 	// Whenever the size of the framebuffer changed (due to window resizing, etc.),
 	// update the dimensions of the region to the new size
 	glViewport(0, 0, width, height);
+}
+
+/// <summary>
+/// Function for handling the event when a key is pressed.
+/// </summary>
+/// <param name="window">Reference to the window</param>
+/// <param name="key">Keyboard key</param>
+/// <param name="scancode">Platform-specific scancode</param>
+/// <param name="action">Action done on key</param>
+/// <param name="mods">Modifier bits</param>
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	const float cameraSpeed = 0.25f; // adjust accordingly
+	if (key == GLFW_KEY_LEFT) {
+		cameraPosition -= glm::normalize(glm::cross(cameraFront, cameraUp)) * (cameraSpeed / 2.0f);
+	}
+	else if (key == GLFW_KEY_RIGHT) {
+		cameraPosition += glm::normalize(glm::cross(cameraFront, cameraUp)) * (cameraSpeed / 2.0f);
+	}
+	else if (key == GLFW_KEY_UP) {
+		cameraPosition += cameraSpeed * cameraFront;
+	}
+	else if (key == GLFW_KEY_DOWN) {
+		cameraPosition -= cameraSpeed * cameraFront;
+	}
 }
