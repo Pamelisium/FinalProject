@@ -103,9 +103,14 @@ float yaw;
 float lastX, lastY;
 
 /// <summary>
-/// Determines if mouse input is received for the first time
+/// Indicates if mouse input is received for the first time
 /// </summary>
 bool firstMouse = true;
+
+/// <summary>
+/// Indicates the visibility of mouse cursor
+/// </summary>
+bool visibleCursor = false;
 
 /// <summary>
 /// Main function.
@@ -618,6 +623,17 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	}
 	else if (key == GLFW_KEY_DOWN) {
 		cameraPosition -= cameraSpeed * cameraFront;
+	}
+	if (action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
+		// Tell OpenGL to display the cursor if it is hidden and vice versa
+		if (!visibleCursor) {
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+			visibleCursor = true;
+		}
+		else {
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+			visibleCursor = false;
+		}
 	}
 }
 
