@@ -62,6 +62,14 @@ void FramebufferSizeChangedCallback(GLFWwindow* window, int width, int height);
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 /// <summary>
+/// Function for handling the event when the mouse moves.
+/// </summary>
+/// <param name="window">Reference to the window</param>
+/// <param name="xpos">Mouse current x-position</param>
+/// <param name="ypos">Mouse current y-position</param>
+void MouseCallback(GLFWwindow* window, double xpos, double ypos);
+
+/// <summary>
 /// Struct containing data about a vertex
 /// </summary>
 struct Vertex
@@ -78,6 +86,26 @@ struct Vertex
 glm::vec3 cameraPosition = glm::vec3(0.0f, -15.0f, 0.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
+/// <summary>
+/// Angle that depicts the amount of looking up or down 
+/// </summary>
+float pitch;
+
+/// <summary>
+/// Angle that depicts the amount of looking left or right
+/// </summary>
+float yaw;
+
+/// <summary>
+/// Initial mouse position at the center of the screen
+/// </summary>
+float lastX, lastY;
+
+/// <summary>
+/// Determines if mouse input is received for the first time
+/// </summary>
+bool firstMouse = true;
 
 /// <summary>
 /// Main function.
@@ -122,6 +150,12 @@ int main()
 
 	// Register the callback function that handles when a key is pressed
 	glfwSetKeyCallback(window, KeyCallback);
+
+	// Register the callback function that handles when the mouse moves
+	glfwSetCursorPosCallback(window, MouseCallback);
+
+	// Tell OpenGL to hide and capture the cursor
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	// Tell GLAD to load the OpenGL function pointers
 	if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
@@ -585,4 +619,41 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	else if (key == GLFW_KEY_DOWN) {
 		cameraPosition -= cameraSpeed * cameraFront;
 	}
+}
+
+/// <summary>
+/// Function for handling the event when the mouse moves.
+/// </summary>
+/// <param name="window">Reference to the window</param>
+/// <param name="xpos">Mouse current x-position</param>
+/// <param name="ypos">Mouse current y-position</param>
+void MouseCallback(GLFWwindow* window, double xpos, double ypos)
+{
+	if (firstMouse)
+	{
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
+
+	float xoffset = xpos - lastX;
+	float yoffset = lastY - ypos;
+	lastX = xpos;
+	lastY = ypos;
+
+	float sensitivity = 0.1f;
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
+
+	yaw += xoffset;
+	pitch += yoffset;
+
+	if (pitch > 89.0f) pitch = 89.0f;
+	if (pitch < -89.0f) pitch = -89.0f;
+
+	glm::vec3 direction;
+	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	direction.y = sin(glm::radians(pitch));
+	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cameraFront = glm::normalize(direction);
 }
