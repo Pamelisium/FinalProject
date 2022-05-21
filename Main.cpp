@@ -612,18 +612,24 @@ void FramebufferSizeChangedCallback(GLFWwindow* window, int width, int height)
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	const float cameraSpeed = 0.25f; // adjust accordingly
-	if (key == GLFW_KEY_LEFT) {
+	if (key == GLFW_KEY_LEFT || key == GLFW_KEY_A) {
 		cameraPosition -= glm::normalize(glm::cross(cameraFront, cameraUp)) * (cameraSpeed / 2.0f);
 	}
-	else if (key == GLFW_KEY_RIGHT) {
+	else if (key == GLFW_KEY_RIGHT || key == GLFW_KEY_D) {
 		cameraPosition += glm::normalize(glm::cross(cameraFront, cameraUp)) * (cameraSpeed / 2.0f);
 	}
-	else if (key == GLFW_KEY_UP) {
+	else if (key == GLFW_KEY_UP || key == GLFW_KEY_W) {
 		cameraPosition += cameraSpeed * cameraFront;
 	}
-	else if (key == GLFW_KEY_DOWN) {
+	else if (key == GLFW_KEY_DOWN || key == GLFW_KEY_S) {
 		cameraPosition -= cameraSpeed * cameraFront;
 	}
+
+	// Restricting camera movement within room's boundaries
+	if (abs(cameraPosition.x) > 23.0f) cameraPosition.x = cameraPosition.x / abs(cameraPosition.x) * 23.0f;
+	if (cameraPosition.y != -15.0f) cameraPosition.y = -15.0f;
+	if (abs(cameraPosition.z) > 23.0f) cameraPosition.z = cameraPosition.z / abs(cameraPosition.z) * 23.0f;
+
 	if (action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
 		// Tell OpenGL to display the cursor if it is hidden and vice versa
 		if (!visibleCursor) {
