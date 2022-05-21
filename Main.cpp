@@ -139,7 +139,7 @@ int main()
 	// Tell GLFW to create a window
 	int windowWidth = 800;
 	int windowHeight = 600;
-	GLFWwindow* window = glfwCreateWindow(windowWidth, windowHeight, "Lighting", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(windowWidth, windowHeight, "[Mendoza & Serrano] GDEV 30 Final Project", nullptr, nullptr);
 	if (window == nullptr)
 	{
 		std::cerr << "Failed to create GLFW window!" << std::endl;
@@ -172,9 +172,10 @@ int main()
 	// --- Vertex specification ---
 	
 	// Set up the data for each vertex of the triangle
-	Vertex vertices[24];
+	Vertex vertices[48];
 
 	// --- Room ---
+
 	// Front Square
 	vertices[0].x = -0.5f;			vertices[0].y = -0.5f;			vertices[0].z = -0.5f;
 	vertices[0].r = 255;			vertices[0].g = 255;			vertices[0].b = 255;
@@ -300,6 +301,134 @@ int main()
 	vertices[23].r = 255;			vertices[23].g = 255;			vertices[23].b = 255;
 	vertices[23].u = (float)2/3;	vertices[23].v = (float)1/3;
 	vertices[23].nx = 0.0f;			vertices[23].ny = 1.0f;			vertices[23].nz = 0.0f;
+
+	// --- Stand ---
+
+	// Front Rectangle
+	vertices[24].x = -0.5f;			vertices[24].y = -0.8f;			vertices[24].z = -0.5f;
+	vertices[24].r = 255;			vertices[24].g = 255;			vertices[24].b = 255;
+	vertices[24].u = 0.0f;			vertices[24].v = (float)2/3;
+	vertices[24].nx = 0.0f;			vertices[24].ny = 0.0f;			vertices[24].nz = -1.0f;
+
+	vertices[25].x = -0.5f;			vertices[25].y = 0.8f;			vertices[25].z = -0.5f;
+	vertices[25].r = 255;			vertices[25].g = 255;			vertices[25].b = 255;
+	vertices[25].u = 0.0f;			vertices[25].v = 1.0f;
+	vertices[25].nx = 0.0f;			vertices[25].ny = 0.0f;			vertices[25].nz = -1.0f;
+
+	vertices[26].x = 0.5f;			vertices[26].y = 0.8f;			vertices[26].z = -0.5f;
+	vertices[26].r = 255;			vertices[26].g = 255;			vertices[26].b = 255;
+	vertices[26].u = (float)1/3;	vertices[26].v = 1.0f;
+	vertices[26].nx = 0.0f;			vertices[26].ny = 0.0f;			vertices[26].nz = -1.0f;
+
+	vertices[27].x = 0.5f;			vertices[27].y = -0.8f;			vertices[27].z = -0.5f;
+	vertices[27].r = 255;			vertices[27].g = 255;			vertices[27].b = 255;
+	vertices[27].u = (float)1/3;	vertices[27].v = (float)2/3;
+	vertices[27].nx = 0.0f;			vertices[27].ny = 0.0f;			vertices[27].nz = -1.0f;
+
+	// Back Rectangle
+	vertices[28].x = 0.5f;			vertices[28].y = -0.8f;			vertices[28].z = 0.5f;
+	vertices[28].r = 255;			vertices[28].g = 255;			vertices[28].b = 255;
+	vertices[28].u = (float)2/3;	vertices[28].v = (float)1/3;
+	vertices[28].nx = 0.0f;			vertices[28].ny = 0.0f;			vertices[28].nz = 1.0f;
+
+	vertices[29].x = 0.5f;			vertices[29].y = 0.8f;			vertices[29].z = 0.5f;
+	vertices[29].r = 255;			vertices[29].g = 255;			vertices[29].b = 255;
+	vertices[29].u = (float)2/3;	vertices[29].v = (float)2/3;
+	vertices[29].nx = 0.0f;			vertices[29].ny = 0.0f;			vertices[29].nz = 1.0f;
+
+	vertices[30].x = -0.5f;			vertices[30].y = 0.8f;			vertices[30].z = 0.5f;
+	vertices[30].r = 255;			vertices[30].g = 255;			vertices[30].b = 255;
+	vertices[30].u = 1.0f;			vertices[30].v = (float)2/3;
+	vertices[30].nx = 0.0f;			vertices[30].ny = 0.0f;			vertices[30].nz = 1.0f;
+
+	vertices[31].x = -0.5f;			vertices[31].y = -0.8f;			vertices[31].z = 0.5f;
+	vertices[31].r = 255;			vertices[31].g = 255;			vertices[31].b = 255;
+	vertices[31].u = 1.0f;			vertices[31].v = (float)1/3;
+	vertices[31].nx = 0.0f;			vertices[31].ny = 0.0f;			vertices[31].nz = 1.0f;
+
+	// Left Rectangle
+	vertices[32].x = -0.5f;			vertices[32].y = -0.8f;			vertices[32].z = 0.5f;
+	vertices[32].r = 255;			vertices[32].g = 255;			vertices[32].b = 255;
+	vertices[32].u = 0.0f;			vertices[32].v = (float)1/3;
+	vertices[32].nx = -1.0f;		vertices[32].ny = 0.0f;			vertices[32].nz = 0.0f;
+
+	vertices[33].x = -0.5f;			vertices[33].y = 0.8f;			vertices[33].z = 0.5f;
+	vertices[33].r = 255;			vertices[33].g = 255;			vertices[33].b = 255;
+	vertices[33].u = 0.0f;			vertices[33].v = (float)2/3;
+	vertices[33].nx = -1.0f;		vertices[33].ny = 0.0f;			vertices[33].nz = 0.0f;
+
+	vertices[34].x = -0.5f;			vertices[34].y = 0.8f;			vertices[34].z = -0.5f;
+	vertices[34].r = 255;			vertices[34].g = 255;			vertices[34].b = 255;
+	vertices[34].u = (float)1/3;	vertices[34].v = (float)2/3;
+	vertices[34].nx = -1.0f;		vertices[34].ny = 0.0f;			vertices[34].nz = 0.0f;
+
+	vertices[35].x = -0.5f;			vertices[35].y = -0.8f;			vertices[35].z = -0.5f;
+	vertices[35].r = 255;			vertices[35].g = 255;			vertices[35].b = 255;
+	vertices[35].u = (float)1/3;	vertices[35].v = (float)1/3;
+	vertices[35].nx = -1.0f;		vertices[35].ny = 0.0f;			vertices[35].nz = 0.0f;
+
+	// Right Rectangle
+	vertices[36].x = 0.5f;			vertices[36].y = -0.8f;			vertices[36].z = -0.5f;
+	vertices[36].r = 255;			vertices[36].g = 255;			vertices[36].b = 255;
+	vertices[36].u = (float)2/3;	vertices[36].v = (float)2/3;
+	vertices[36].nx = 1.0f;			vertices[36].ny = 0.0f;			vertices[36].nz = 0.0f;
+
+	vertices[37].x = 0.5f;			vertices[37].y = 0.8f;			vertices[37].z = -0.5f;
+	vertices[37].r = 255;			vertices[37].g = 255;			vertices[37].b = 255;
+	vertices[37].u = (float)2/3;	vertices[37].v = 1.0f;
+	vertices[37].nx = 1.0f;			vertices[37].ny = 0.0f;			vertices[37].nz = 0.0f;
+
+	vertices[38].x = 0.5f;			vertices[38].y = 0.8f;			vertices[38].z = 0.5f;
+	vertices[38].r = 255;			vertices[38].g = 255;			vertices[38].b = 255;
+	vertices[38].u = 1.0f;			vertices[38].v = 1.0f;
+	vertices[38].nx = 1.0f;			vertices[38].ny = 0.0f;			vertices[38].nz = 0.0f;
+
+	vertices[39].x = 0.5f;			vertices[39].y = -0.8f;			vertices[39].z = 0.5f;
+	vertices[39].r = 255;			vertices[39].g = 255;			vertices[39].b = 255;
+	vertices[39].u = 1.0f;			vertices[39].v = (float)2/3;
+	vertices[39].nx = 1.0f;			vertices[39].ny = 0.0f;			vertices[39].nz = 0.0f;
+
+	// Top Square
+	vertices[40].x = -0.5f;			vertices[40].y = 0.8f;			vertices[40].z = -0.5f;
+	vertices[40].r = 255;			vertices[40].g = 255;			vertices[40].b = 255;
+	vertices[40].u = (float)1/3;	vertices[40].v = (float)2/3;
+	vertices[40].nx = 0.0f;			vertices[40].ny = 1.0f;			vertices[40].nz = 0.0f;
+
+	vertices[41].x = -0.5f;			vertices[41].y = 0.8f;			vertices[41].z = 0.5f;
+	vertices[41].r = 255;			vertices[41].g = 255;			vertices[41].b = 255;
+	vertices[41].u = (float)1/3;	vertices[41].v = 1.0f;
+	vertices[41].nx = 0.0f;			vertices[41].ny = 1.0f;			vertices[41].nz = 0.0f;
+
+	vertices[42].x = 0.5f;			vertices[42].y = 0.8f;			vertices[42].z = 0.5f;
+	vertices[42].r = 255;			vertices[42].g = 255;			vertices[42].b = 255;
+	vertices[42].u = (float)2/3;	vertices[42].v = 1.0f;
+	vertices[42].nx = 0.0f;			vertices[42].ny = 1.0f;			vertices[42].nz = 0.0f;
+
+	vertices[43].x = 0.5f;			vertices[43].y = 0.8f;			vertices[43].z = -0.5f;
+	vertices[43].r = 255;			vertices[43].g = 255;			vertices[43].b = 255;
+	vertices[43].u = (float)2/3;	vertices[43].v = (float)2/3;
+	vertices[43].nx = 0.0f;			vertices[43].ny = 1.0f;			vertices[43].nz = 0.0f;
+
+	// Bottom Square
+	vertices[44].x = 0.5f;			vertices[44].y = -0.8f;			vertices[44].z = -0.5f;
+	vertices[44].r = 255;			vertices[44].g = 255;			vertices[44].b = 255;
+	vertices[44].u = (float)1/3;	vertices[44].v = (float)1/3;
+	vertices[44].nx = 0.0f;			vertices[44].ny = -1.0f;		vertices[44].nz = 0.0f;
+
+	vertices[45].x = 0.5f;			vertices[45].y = -0.8f;			vertices[45].z = 0.5f;
+	vertices[45].r = 255;			vertices[45].g = 255;			vertices[45].b = 255;
+	vertices[45].u = (float)1/3;	vertices[45].v = (float)2/3;
+	vertices[45].nx = 0.0f;			vertices[45].ny = -1.0f;		vertices[45].nz = 0.0f;
+
+	vertices[46].x = -0.5f;			vertices[46].y = -0.8f;			vertices[46].z = 0.5f;
+	vertices[46].r = 255;			vertices[46].g = 255;			vertices[46].b = 255;
+	vertices[46].u = (float)2/3;	vertices[46].v = (float)2/3;
+	vertices[46].nx = 0.0f;			vertices[46].ny = -1.0f;		vertices[46].nz = 0.0f;
+
+	vertices[47].x = -0.5f;			vertices[47].y = -0.8f;			vertices[47].z = -0.5f;
+	vertices[47].r = 255;			vertices[47].g = 255;			vertices[47].b = 255;
+	vertices[47].u = (float)2/3;	vertices[47].v = (float)1/3;
+	vertices[47].nx = 0.0f;			vertices[47].ny = -1.0f;		vertices[47].nz = 0.0f;
 
 	// Create a vertex buffer object (VBO), and upload our vertices data to the VBO
 	GLuint vbo;
@@ -433,11 +562,23 @@ int main()
 		GLint shininessUniformLocation = glGetUniformLocation(program, "shininess");
 		glUniform1f(shininessUniformLocation, 8.0f);
 
+		// --- Projection and View Matrices ---
+
 		// Projection Matrix
 		glm::mat4 proj = glm::perspective(glm::radians(60.0f), (float)windowWidth / (float)windowHeight, 0.1f, 100.0f);
 
 		// View Matrix
 		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + cameraFront, cameraUp);
+
+		// Uniform variables
+		GLint projUniformLocation = glGetUniformLocation(program, "proj");
+		glUniformMatrix4fv(projUniformLocation, 1, GL_FALSE, glm::value_ptr(proj));
+
+		GLint viewUniformLocation = glGetUniformLocation(program, "view");
+		glUniformMatrix4fv(viewUniformLocation, 1, GL_FALSE, glm::value_ptr(view));
+
+		GLint cameraPositionUniformLocation = glGetUniformLocation(program, "cameraPosition");
+		glUniform3fv(cameraPositionUniformLocation, 3, glm::value_ptr(cameraPosition));
 
 		// --- Room ---
 
@@ -448,15 +589,6 @@ int main()
 		glm::mat4 normal = glm::transpose(glm::inverse(model));
 
 		// Uniform variables
-		GLint projUniformLocation = glGetUniformLocation(program, "proj");
-    	glUniformMatrix4fv(projUniformLocation, 1, GL_FALSE, glm::value_ptr(proj));
-
-		GLint viewUniformLocation = glGetUniformLocation(program, "view");
-		glUniformMatrix4fv(viewUniformLocation, 1, GL_FALSE, glm::value_ptr(view));
-
-		GLint cameraPositionUniformLocation = glGetUniformLocation(program, "cameraPosition");
-		glUniform3fv(cameraPositionUniformLocation, 3, glm::value_ptr(cameraPosition));
-
 		GLint modelUniformLocation = glGetUniformLocation(program, "model");
 		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
 
@@ -470,6 +602,102 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 12, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 16, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 20, 4);
+
+		// --- Stand 1 ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, -21.0f, 10.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		glDrawArrays(GL_TRIANGLE_FAN, 24, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 28, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 32, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
+
+		// --- Stand 2 ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(10.0f, -21.0f, 10.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		glDrawArrays(GL_TRIANGLE_FAN, 24, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 28, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 32, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
+
+		// --- Stand 3 ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, -21.0f, -10.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		glDrawArrays(GL_TRIANGLE_FAN, 24, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 28, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 32, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
+
+		// --- Stand 4 ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(10.0f, -21.0f, -10.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		glDrawArrays(GL_TRIANGLE_FAN, 24, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 28, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 32, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
 
 		// "Unuse" the vertex array object
 		glBindVertexArray(0);
