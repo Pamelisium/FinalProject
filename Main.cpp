@@ -356,7 +356,7 @@ int main()
 
 		// Uniform variables for point light
 		GLint lightPositionUniformLocation = glGetUniformLocation(program, "lightPosition");
-		glUniform3f(lightPositionUniformLocation, 0.0f, 0.0f, 55.0f);
+		glUniform3f(lightPositionUniformLocation, 0.0f, 0.0f, 0.0f);
 
 		GLint lightAmbientUniformLocation = glGetUniformLocation(program, "lightAmbient");
 		glUniform3f(lightAmbientUniformLocation, 0.2f, 0.2f, 0.2f);
@@ -380,7 +380,7 @@ int main()
 		glm::mat4 proj = glm::perspective(glm::radians(90.0f), (float)windowWidth / (float)windowHeight, 0.1f, 100.0f);
 
 		// View Matrix
-		glm::vec3 cameraPosition = glm::vec3 (0.0f, 0.0f, 55.0f);
+		glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, -10.0f);
 		glm::mat4 view = glm::lookAt(cameraPosition, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 		// Model Matrix
