@@ -25,7 +25,7 @@ uniform vec3 lightDiffuse;
 uniform vec3 lightSpecular;
 
 // Uniform variables for spot light
-uniform vec3 spotlightPosition;
+uniform vec3 spotlightPosition[4];
 uniform vec3 spotlightAmbient;
 uniform vec3 spotlightDiffuse;
 uniform vec3 spotlightSpecular;
@@ -55,18 +55,20 @@ void main()
 	lightSum += lightAmbient + lightDiffuse * diffuseStrength + lightSpecular * objectSpecular * specularStrength;
 
 	// Using the Phong lighting equation to calculate the final fragment color considering spot light
-	vec3 spotlightDirection = normalize(spotlightPosition - outPosition);
-	vec3 spotlightReflection = reflect(-spotlightDirection, normal);
+	for (int i = 0; i < 4; i++){
+		vec3 spotlightDirection = normalize(spotlightPosition[i] - outPosition);
+		vec3 spotlightReflection = reflect(-spotlightDirection, normal);
 
-	float spotlightDiffuseStrength = max(dot(normal, spotlightDirection), 0.0);
-	float spotlightSpecularStrength = pow(max(dot(spotlightReflection, cameraDirection), 0.0), shininess);
-	float spotFactor = dot(spotlightDirection, normalize(-spotlightTarget));
+		float spotlightDiffuseStrength = max(dot(normal, spotlightDirection), 0.0);
+		float spotlightSpecularStrength = pow(max(dot(spotlightReflection, cameraDirection), 0.0), shininess);
+		float spotFactor = dot(spotlightDirection, normalize(-spotlightTarget));
 	
-	if (spotFactor > spotlightCutoff){
-		lightSum += spotlightAmbient + spotlightDiffuse * spotlightDiffuseStrength + spotlightSpecular * objectSpecular * spotlightSpecularStrength;
-	}
-	else{
-		fragColor = vec4(spotlightAmbient, 1.0) * texture(tex, outUV);
+		if (spotFactor > spotlightCutoff){
+			lightSum += spotlightAmbient + spotlightDiffuse * spotlightDiffuseStrength + spotlightSpecular * objectSpecular * spotlightSpecularStrength;
+		}
+		else{
+			fragColor = vec4(spotlightAmbient, 1.0) * texture(tex, outUV);
+		}
 	}
 
 	// Combining point and spot lights to produce final fragment color

@@ -756,23 +756,32 @@ int main()
 		glUniform3f(lightAmbientUniformLocation, 0.2f, 0.2f, 0.2f);
 
 		GLint lightDiffuseUniformLocation = glGetUniformLocation(program, "lightDiffuse");
-		glUniform3f(lightDiffuseUniformLocation, 0.8f, 0.8f, 1.0f);
+		glUniform3f(lightDiffuseUniformLocation, 0.8f, 0.8f, 0.8f);
 
 		GLint lightSpecularUniformLocation = glGetUniformLocation(program, "lightSpecular");
 		glUniform3f(lightSpecularUniformLocation, 0.5f, 0.5f, 0.5f);
 
 		// Uniform variables for spot light
-		GLint spotlightPositionUniformLocation = glGetUniformLocation(program, "spotlightPosition");
-		glUniform3f(spotlightPositionUniformLocation, -10.0f, 20.0f, 10.0f);
+		GLint spotlightPosition0UniformLocation = glGetUniformLocation(program, "spotlightPosition[0]");
+		glUniform3f(spotlightPosition0UniformLocation, -10.0f, 20.0f, 10.0f);
+
+		GLint spotlightPosition1UniformLocation = glGetUniformLocation(program, "spotlightPosition[1]");
+		glUniform3f(spotlightPosition1UniformLocation, 10.0f, 20.0f, 10.0f);
+
+		GLint spotlightPosition2UniformLocation = glGetUniformLocation(program, "spotlightPosition[2]");
+		glUniform3f(spotlightPosition2UniformLocation, -10.0f, 20.0f, -10.0f);
+
+		GLint spotlightPosition3UniformLocation = glGetUniformLocation(program, "spotlightPosition[3]");
+		glUniform3f(spotlightPosition3UniformLocation, 10.0f, 20.0f, -10.0f);
 
 		GLint spotlightAmbientUniformLocation = glGetUniformLocation(program, "spotlightAmbient");
 		glUniform3f(spotlightAmbientUniformLocation, 0.2f, 0.2f, 0.1f);
 
 		GLint spotlightDiffuseUniformLocation = glGetUniformLocation(program, "spotlightDiffuse");
-		glUniform3f(spotlightDiffuseUniformLocation, 0.8f, 0.8f, 0.2f);
+		glUniform3f(spotlightDiffuseUniformLocation, 0.8f, 0.8f, 0.4f);
 
 		GLint spotlightSpecularUniformLocation = glGetUniformLocation(program, "spotlightSpecular");
-		glUniform3f(spotlightSpecularUniformLocation, 0.75f, 0.75f, 0.75f);
+		glUniform3f(spotlightSpecularUniformLocation, 0.5f, 0.5f, 0.5f);
 
 		GLint spotlightTargetUniformLocation = glGetUniformLocation(program, "spotlightTarget");
 		glUniform3f(spotlightTargetUniformLocation, 0.0f, -1.0f, 0.0f);
