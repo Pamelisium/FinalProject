@@ -901,11 +901,86 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
 
-		// --- Painting 1 ---
+		// --- Painting 1: Solo Vertical ---
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 24.0f));
-		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 2.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(17.5f, 17.5f, 2.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		glDrawArrays(GL_TRIANGLE_FAN, 64, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 68, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 72, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 76, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 80, 4);
+
+		// --- Painting 2: Solo Horizontal ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -24.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(17.5f, 17.5f, 2.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		glDrawArrays(GL_TRIANGLE_FAN, 64, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 68, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 72, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 76, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 80, 4);
+
+		// --- Paintings 3 and 4: Horizontal and Square ---
+
+		// --- Horizontal Painting ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-24.0f, 7.5f, 5.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(12.5f, 12.5f, 2.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		glDrawArrays(GL_TRIANGLE_FAN, 64, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 68, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 72, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 76, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 80, 4);
+
+		// --- Square Painting ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-24.0f, -7.5f, -7.5f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(12.5f, 12.5f, 2.0f));
 
 		// Normal Matrix
 		normal = glm::transpose(glm::inverse(model));
@@ -924,12 +999,15 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 56, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 60, 4);
 
-		// --- Painting 2 ---
+		// --- Paintings 5 and 6: Vertical and Square ---
+
+		// --- Vertical Painting ---
 
 		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -24.0f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 2.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(24.0f, 5.0f, -7.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(12.5f, 12.5f, 2.0f));
 
 		// Normal Matrix
 		normal = glm::transpose(glm::inverse(model));
@@ -947,6 +1025,30 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 72, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 76, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 80, 4);
+
+		// --- Square Painting ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(24.0f, -7.5f, 7.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(12.5f, 12.5f, 2.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 48, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 52, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 56, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 60, 4);
 
 		// "Unuse" the vertex array object
 		glBindVertexArray(0);
