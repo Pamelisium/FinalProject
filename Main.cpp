@@ -182,7 +182,7 @@ int main()
 	// --- Vertex specification ---
 	
 	// Set up the data for each vertex of the triangle
-	Vertex vertices[64];
+	Vertex vertices[84];
 
 	// --- Room ---
 
@@ -425,106 +425,213 @@ int main()
 	vertices[44].x = -0.5f;			vertices[44].y = -0.5f;			vertices[44].z = -0.5f;
 	vertices[44].r = 255;			vertices[44].g = 255;			vertices[44].b = 255;
 	vertices[44].u = 0.0f;			vertices[44].v = (float)2/3;
-	vertices[44].nx = 0.0f;			vertices[44].ny = 0.0f;			vertices[44].nz = 1.0f;
+	vertices[44].nx = 0.0f;			vertices[44].ny = 0.0f;			vertices[44].nz = -1.0f;
 
 	vertices[45].x = -0.5f;			vertices[45].y = 0.5f;			vertices[45].z = -0.5f;
 	vertices[45].r = 255;			vertices[45].g = 255;			vertices[45].b = 255;
 	vertices[45].u = 0.0f;			vertices[45].v = 1.0f;
-	vertices[45].nx = 0.0f;			vertices[45].ny = 0.0f;			vertices[45].nz = 1.0f;
+	vertices[45].nx = 0.0f;			vertices[45].ny = 0.0f;			vertices[45].nz = -1.0f;
 
 	vertices[46].x = 0.5f;			vertices[46].y = 0.5f;			vertices[46].z = -0.5f;
 	vertices[46].r = 255;			vertices[46].g = 255;			vertices[46].b = 255;
 	vertices[46].u = (float)1/3;	vertices[46].v = 1.0f;
-	vertices[46].nx = 0.0f;			vertices[46].ny = 0.0f;			vertices[46].nz = 1.0f;
+	vertices[46].nx = 0.0f;			vertices[46].ny = 0.0f;			vertices[46].nz = -1.0f;
 
 	vertices[47].x = 0.5f;			vertices[47].y = -0.5f;			vertices[47].z = -0.5f;
 	vertices[47].r = 255;			vertices[47].g = 255;			vertices[47].b = 255;
 	vertices[47].u = (float)1/3;	vertices[47].v = (float)2/3;
-	vertices[47].nx = 0.0f;			vertices[47].ny = 0.0f;			vertices[47].nz = 1.0f;
+	vertices[47].nx = 0.0f;			vertices[47].ny = 0.0f;			vertices[47].nz = -1.0f;
 
 	// Right Rectangle
 	vertices[48].x = -0.5f;			vertices[48].y = -0.5f;			vertices[48].z = 0.0f;
 	vertices[48].r = 255;			vertices[48].g = 255;			vertices[48].b = 255;
 	vertices[48].u = 0.0f;			vertices[48].v = (float)1/3;
-	vertices[48].nx = 1.0f;			vertices[48].ny = 0.0f;			vertices[48].nz = 0.0f;
+	vertices[48].nx = -1.0f;		vertices[48].ny = 0.0f;			vertices[48].nz = 0.0f;
 
 	vertices[49].x = -0.5f;			vertices[49].y = 0.5f;			vertices[49].z = 0.0f;
 	vertices[49].r = 255;			vertices[49].g = 255;			vertices[49].b = 255;
 	vertices[49].u = 0.0f;			vertices[49].v = (float)2/3;
-	vertices[49].nx = 1.0f;			vertices[49].ny = 0.0f;			vertices[49].nz = 0.0f;
+	vertices[49].nx = -1.0f;		vertices[49].ny = 0.0f;			vertices[49].nz = 0.0f;
 
 	vertices[50].x = -0.5f;			vertices[50].y = 0.5f;			vertices[50].z = -0.5f;
 	vertices[50].r = 255;			vertices[50].g = 255;			vertices[50].b = 255;
 	vertices[50].u = (float)1/3;	vertices[50].v = (float)2/3;
-	vertices[50].nx = 1.0f;			vertices[50].ny = 0.0f;			vertices[50].nz = 0.0f;
+	vertices[50].nx = -1.0f;		vertices[50].ny = 0.0f;			vertices[50].nz = 0.0f;
 
 	vertices[51].x = -0.5f;			vertices[51].y = -0.5f;			vertices[51].z = -0.5f;
 	vertices[51].r = 255;			vertices[51].g = 255;			vertices[51].b = 255;
 	vertices[51].u = (float)1/3;	vertices[51].v = (float)1/3;
-	vertices[51].nx = 1.0f;			vertices[51].ny = 0.0f;			vertices[51].nz = 0.0f;
+	vertices[51].nx = -1.0f;		vertices[51].ny = 0.0f;			vertices[51].nz = 0.0f;
 
 	// Left Rectangle
 	vertices[52].x = 0.5f;			vertices[52].y = -0.5f;			vertices[52].z = -0.5f;
 	vertices[52].r = 255;			vertices[52].g = 255;			vertices[52].b = 255;
 	vertices[52].u = (float)2/3;	vertices[52].v = (float)2/3;
-	vertices[52].nx = -1.0f;		vertices[52].ny = 0.0f;			vertices[52].nz = 0.0f;
+	vertices[52].nx = 1.0f;			vertices[52].ny = 0.0f;			vertices[52].nz = 0.0f;
 
 	vertices[53].x = 0.5f;			vertices[53].y = 0.5f;			vertices[53].z = -0.5f;
 	vertices[53].r = 255;			vertices[53].g = 255;			vertices[53].b = 255;
 	vertices[53].u = (float)2/3;	vertices[53].v = 1.0f;
-	vertices[53].nx = -1.0f;		vertices[53].ny = 0.0f;			vertices[53].nz = 0.0f;
+	vertices[53].nx = 1.0f;			vertices[53].ny = 0.0f;			vertices[53].nz = 0.0f;
 
 	vertices[54].x = 0.5f;			vertices[54].y = 0.5f;			vertices[54].z = 0.0f;
 	vertices[54].r = 255;			vertices[54].g = 255;			vertices[54].b = 255;
 	vertices[54].u = 1.0f;			vertices[54].v = 1.0f;
-	vertices[54].nx = -1.0f;		vertices[54].ny = 0.0f;			vertices[54].nz = 0.0f;
+	vertices[54].nx = 1.0f;			vertices[54].ny = 0.0f;			vertices[54].nz = 0.0f;
 
 	vertices[55].x = 0.5f;			vertices[55].y = -0.5f;			vertices[55].z = 0.0f;
 	vertices[55].r = 255;			vertices[55].g = 255;			vertices[55].b = 255;
 	vertices[55].u = 1.0f;			vertices[55].v = (float)2/3;
-	vertices[55].nx = -1.0f;		vertices[55].ny = 0.0f;			vertices[55].nz = 0.0f;
+	vertices[55].nx = 1.0f;			vertices[55].ny = 0.0f;			vertices[55].nz = 0.0f;
 
 	// Top Rectangle
 	vertices[56].x = -0.5f;			vertices[56].y = 0.5f;			vertices[56].z = -0.5f;
 	vertices[56].r = 255;			vertices[56].g = 255;			vertices[56].b = 255;
 	vertices[56].u = (float)1/3;	vertices[56].v = (float)2/3;
-	vertices[56].nx = 0.0f;			vertices[56].ny = -1.0f;		vertices[56].nz = 0.0f;
+	vertices[56].nx = 0.0f;			vertices[56].ny = 1.0f;			vertices[56].nz = 0.0f;
 
 	vertices[57].x = -0.5f;			vertices[57].y = 0.5f;			vertices[57].z = 0.0f;
 	vertices[57].r = 255;			vertices[57].g = 255;			vertices[57].b = 255;
 	vertices[57].u = (float)1/3;	vertices[57].v = 1.0f;
-	vertices[57].nx = 0.0f;			vertices[57].ny = -1.0f;		vertices[57].nz = 0.0f;
+	vertices[57].nx = 0.0f;			vertices[57].ny = 1.0f;			vertices[57].nz = 0.0f;
 
 	vertices[58].x = 0.5f;			vertices[58].y = 0.5f;			vertices[58].z = 0.0f;
 	vertices[58].r = 255;			vertices[58].g = 255;			vertices[58].b = 255;
 	vertices[58].u = (float)2/3;	vertices[58].v = 1.0f;
-	vertices[58].nx = 0.0f;			vertices[58].ny = -1.0f;		vertices[58].nz = 0.0f;
+	vertices[58].nx = 0.0f;			vertices[58].ny = 1.0f;			vertices[58].nz = 0.0f;
 
 	vertices[59].x = 0.5f;			vertices[59].y = 0.5f;			vertices[59].z = -0.5f;
 	vertices[59].r = 255;			vertices[59].g = 255;			vertices[59].b = 255;
 	vertices[59].u = (float)2/3;	vertices[59].v = (float)2/3;
-	vertices[59].nx = 0.0f;			vertices[59].ny = -1.0f;		vertices[59].nz = 0.0f;
+	vertices[59].nx = 0.0f;			vertices[59].ny = 1.0f;			vertices[59].nz = 0.0f;
 
 	// Bottom Rectangle
 	vertices[60].x = 0.5f;			vertices[60].y = -0.5f;			vertices[60].z = -0.5f;
 	vertices[60].r = 255;			vertices[60].g = 255;			vertices[60].b = 255;
 	vertices[60].u = (float)1/3;	vertices[60].v = (float)1/3;
-	vertices[60].nx = 0.0f;			vertices[60].ny = 1.0f;			vertices[60].nz = 0.0f;
+	vertices[60].nx = 0.0f;			vertices[60].ny = -1.0f;		vertices[60].nz = 0.0f;
 
 	vertices[61].x = 0.5f;			vertices[61].y = -0.5f;			vertices[61].z = 0.0f;
 	vertices[61].r = 255;			vertices[61].g = 255;			vertices[61].b = 255;
 	vertices[61].u = (float)1/3;	vertices[61].v = (float)2/3;
-	vertices[61].nx = 0.0f;			vertices[61].ny = 1.0f;			vertices[61].nz = 0.0f;
+	vertices[61].nx = 0.0f;			vertices[61].ny = -1.0f;		vertices[61].nz = 0.0f;
 
 	vertices[62].x = -0.5f;			vertices[62].y = -0.5f;			vertices[62].z = 0.0f;
 	vertices[62].r = 255;			vertices[62].g = 255;			vertices[62].b = 255;
 	vertices[62].u = (float)2/3;	vertices[62].v = (float)2/3;
-	vertices[62].nx = 0.0f;			vertices[62].ny = 1.0f;			vertices[62].nz = 0.0f;
+	vertices[62].nx = 0.0f;			vertices[62].ny = -1.0f;		vertices[62].nz = 0.0f;
 
 	vertices[63].x = -0.5f;			vertices[63].y = -0.5f;			vertices[63].z = -0.5f;
 	vertices[63].r = 255;			vertices[63].g = 255;			vertices[63].b = 255;
 	vertices[63].u = (float)2/3;	vertices[63].v = (float)1/3;
-	vertices[63].nx = 0.0f;			vertices[63].ny = 1.0f;			vertices[63].nz = 0.0f;
+	vertices[63].nx = 0.0f;			vertices[63].ny = -1.0f;		vertices[63].nz = 0.0f;
+
+	// --- Rectangular Painting ---
+
+	// Front Rectangle
+	vertices[64].x = -0.75f;		vertices[64].y = -0.5f;			vertices[64].z = -0.5f;
+	vertices[64].r = 255;			vertices[64].g = 255;			vertices[64].b = 255;
+	vertices[64].u = 0.0f;			vertices[64].v = (float)2/3;
+	vertices[64].nx = 0.0f;			vertices[64].ny = 0.0f;			vertices[64].nz = -1.0f;
+
+	vertices[65].x = -0.75f;		vertices[65].y = 0.5f;			vertices[65].z = -0.5f;
+	vertices[65].r = 255;			vertices[65].g = 255;			vertices[65].b = 255;
+	vertices[65].u = 0.0f;			vertices[65].v = 1.0f;
+	vertices[65].nx = 0.0f;			vertices[65].ny = 0.0f;			vertices[65].nz = -1.0f;
+
+	vertices[66].x = 0.75f;			vertices[66].y = 0.5f;			vertices[66].z = -0.5f;
+	vertices[66].r = 255;			vertices[66].g = 255;			vertices[66].b = 255;
+	vertices[66].u = (float)1/3;	vertices[66].v = 1.0f;
+	vertices[66].nx = 0.0f;			vertices[66].ny = 0.0f;			vertices[66].nz = -1.0f;
+
+	vertices[67].x = 0.75f;			vertices[67].y = -0.5f;			vertices[67].z = -0.5f;
+	vertices[67].r = 255;			vertices[67].g = 255;			vertices[67].b = 255;
+	vertices[67].u = (float)1/3;	vertices[67].v = (float)2/3;
+	vertices[67].nx = 0.0f;			vertices[67].ny = 0.0f;			vertices[67].nz = -1.0f;
+
+	// Right Rectangle
+	vertices[68].x = -0.75f;		vertices[68].y = -0.5f;			vertices[68].z = 0.0f;
+	vertices[68].r = 255;			vertices[68].g = 255;			vertices[68].b = 255;
+	vertices[68].u = 0.0f;			vertices[68].v = (float)1/3;
+	vertices[68].nx = -1.0f;		vertices[68].ny = 0.0f;			vertices[68].nz = 0.0f;
+
+	vertices[69].x = -0.75f;		vertices[69].y = 0.5f;			vertices[69].z = 0.0f;
+	vertices[69].r = 255;			vertices[69].g = 255;			vertices[69].b = 255;
+	vertices[69].u = 0.0f;			vertices[69].v = (float)2/3;
+	vertices[69].nx = -1.0f;		vertices[69].ny = 0.0f;			vertices[69].nz = 0.0f;
+
+	vertices[70].x = -0.75f;		vertices[70].y = 0.5f;			vertices[70].z = -0.5f;
+	vertices[70].r = 255;			vertices[70].g = 255;			vertices[70].b = 255;
+	vertices[70].u = (float)1/3;	vertices[70].v = (float)2/3;
+	vertices[70].nx = -1.0f;		vertices[70].ny = 0.0f;			vertices[70].nz = 0.0f;
+
+	vertices[71].x = -0.75f;		vertices[71].y = -0.5f;			vertices[71].z = -0.5f;
+	vertices[71].r = 255;			vertices[71].g = 255;			vertices[71].b = 255;
+	vertices[71].u = (float)1/3;	vertices[71].v = (float)1/3;
+	vertices[71].nx = -1.0f;		vertices[71].ny = 0.0f;			vertices[71].nz = 0.0f;
+
+	// Left Rectangle
+	vertices[72].x = 0.75f;			vertices[72].y = -0.5f;			vertices[72].z = -0.5f;
+	vertices[72].r = 255;			vertices[72].g = 255;			vertices[72].b = 255;
+	vertices[72].u = (float)2/3;	vertices[72].v = (float)2/3;
+	vertices[72].nx = 1.0f;			vertices[72].ny = 0.0f;			vertices[72].nz = 0.0f;
+
+	vertices[73].x = 0.75f;			vertices[73].y = 0.5f;			vertices[73].z = -0.5f;
+	vertices[73].r = 255;			vertices[73].g = 255;			vertices[73].b = 255;
+	vertices[73].u = (float)2/3;	vertices[73].v = 1.0f;
+	vertices[73].nx = 1.0f;			vertices[73].ny = 0.0f;			vertices[73].nz = 0.0f;
+
+	vertices[74].x = 0.75f;			vertices[74].y = 0.5f;			vertices[74].z = 0.0f;
+	vertices[74].r = 255;			vertices[74].g = 255;			vertices[74].b = 255;
+	vertices[74].u = 1.0f;			vertices[74].v = 1.0f;
+	vertices[74].nx = 1.0f;			vertices[74].ny = 0.0f;			vertices[74].nz = 0.0f;
+
+	vertices[75].x = 0.75f;			vertices[75].y = -0.5f;			vertices[75].z = 0.0f;
+	vertices[75].r = 255;			vertices[75].g = 255;			vertices[75].b = 255;
+	vertices[75].u = 1.0f;			vertices[75].v = (float)2/3;
+	vertices[75].nx = 1.0f;			vertices[75].ny = 0.0f;			vertices[75].nz = 0.0f;
+
+	// Top Rectangle
+	vertices[76].x = -0.75f;		vertices[76].y = 0.5f;			vertices[76].z = -0.5f;
+	vertices[76].r = 255;			vertices[76].g = 255;			vertices[76].b = 255;
+	vertices[76].u = (float)1/3;	vertices[76].v = (float)2/3;
+	vertices[76].nx = 0.0f;			vertices[76].ny = 1.0f;			vertices[76].nz = 0.0f;
+
+	vertices[77].x = -0.75f;		vertices[77].y = 0.5f;			vertices[77].z = 0.0f;
+	vertices[77].r = 255;			vertices[77].g = 255;			vertices[77].b = 255;
+	vertices[77].u = (float)1/3;	vertices[77].v = 1.0f;	
+	vertices[77].nx = 0.0f;			vertices[77].ny = 1.0f;			vertices[77].nz = 0.0f;
+
+	vertices[78].x = 0.75f;			vertices[78].y = 0.5f;			vertices[78].z = 0.0f;
+	vertices[78].r = 255;			vertices[78].g = 255;			vertices[78].b = 255;
+	vertices[78].u = (float)2/3;	vertices[78].v = 1.0f;
+	vertices[78].nx = 0.0f;			vertices[78].ny = 1.0f;			vertices[78].nz = 0.0f;
+
+	vertices[79].x = 0.75f;			vertices[79].y = 0.5f;			vertices[79].z = -0.5f;
+	vertices[79].r = 255;			vertices[79].g = 255;			vertices[79].b = 255;
+	vertices[79].u = (float)2/3;	vertices[79].v = (float)2/3;
+	vertices[79].nx = 0.0f;			vertices[79].ny = 1.0f;			vertices[79].nz = 0.0f;
+
+	// Bottom Rectangle
+	vertices[80].x = 0.75f;			vertices[80].y = -0.5f;			vertices[80].z = -0.5f;
+	vertices[80].r = 255;			vertices[80].g = 255;			vertices[80].b = 255;
+	vertices[80].u = (float)1/3;	vertices[80].v = (float)1/3;
+	vertices[80].nx = 0.0f;			vertices[80].ny = -1.0f;		vertices[80].nz = 0.0f;
+
+	vertices[81].x = 0.75f;			vertices[81].y = -0.5f;			vertices[81].z = 0.0f;
+	vertices[81].r = 255;			vertices[81].g = 255;			vertices[81].b = 255;
+	vertices[81].u = (float)1/3;	vertices[81].v = (float)2/3;
+	vertices[81].nx = 0.0f;			vertices[81].ny = -1.0f;		vertices[81].nz = 0.0f;
+
+	vertices[82].x = -0.75f;		vertices[82].y = -0.5f;			vertices[82].z = 0.0f;
+	vertices[82].r = 255;			vertices[82].g = 255;			vertices[82].b = 255;
+	vertices[82].u = (float)2/3;	vertices[82].v = (float)2/3;
+	vertices[82].nx = 0.0f;			vertices[82].ny = -1.0f;		vertices[82].nz = 0.0f;
+
+	vertices[83].x = -0.75f;		vertices[83].y = -0.5f;			vertices[83].z = -0.5f;
+	vertices[83].r = 255;			vertices[83].g = 255;			vertices[83].b = 255;
+	vertices[83].u = (float)2/3;	vertices[83].v = (float)1/3;
+	vertices[83].nx = 0.0f;			vertices[83].ny = -1.0f;		vertices[83].nz = 0.0f;
 
 	// Create a vertex buffer object (VBO), and upload our vertices data to the VBO
 	GLuint vbo;
@@ -816,6 +923,30 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 52, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 56, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 60, 4);
+
+		// --- Painting 2 ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -24.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 2.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		glDrawArrays(GL_TRIANGLE_FAN, 64, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 68, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 72, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 76, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 80, 4);
 
 		// "Unuse" the vertex array object
 		glBindVertexArray(0);
