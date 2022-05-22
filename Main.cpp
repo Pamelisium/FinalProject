@@ -113,6 +113,16 @@ bool firstMouse = true;
 bool visibleCursor = false;
 
 /// <summary>
+/// Indicates the previous camera x-position before change
+/// </summary>
+float previousX = cameraPosition.x;
+
+/// <summary>
+/// Indicates the previous camera z-position before change
+/// </summary>
+float previousZ = cameraPosition.z;
+
+/// <summary>
 /// Main function.
 /// </summary>
 /// <returns>An integer indicating whether the program ended successfully or not.
@@ -857,6 +867,62 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (abs(cameraPosition.x) > 23.0f) cameraPosition.x = cameraPosition.x / abs(cameraPosition.x) * 23.0f;
 	if (cameraPosition.y != -15.0f) cameraPosition.y = -15.0f;
 	if (abs(cameraPosition.z) > 23.0f) cameraPosition.z = cameraPosition.z / abs(cameraPosition.z) * 23.0f;
+
+	// --- Handling collisions with 3D model Stands ---
+
+	// Stand 1
+	if ((cameraPosition.x <= -7.5f && cameraPosition.x >= -12.5f) && (cameraPosition.z >= 7.5f && cameraPosition.z <= 12.5f)) {
+		if (abs(cameraPosition.x - (-7.5f)) < abs(cameraPosition.x - (-12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+			cameraPosition.x = -7.5f;
+		else if (abs(cameraPosition.x - (-7.5f)) > abs(cameraPosition.x - (-12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+			cameraPosition.x = -12.5f;
+		else if (abs(cameraPosition.z - (7.5f)) < abs(cameraPosition.z - (12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+			cameraPosition.z = 7.5f;
+		else if (abs(cameraPosition.z - (7.5f)) > abs(cameraPosition.z - (12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+			cameraPosition.z = 12.5f;
+	}
+
+	// Stand 2
+	if ((cameraPosition.x >= 7.5f && cameraPosition.x <= 12.5f) && (cameraPosition.z >= 7.5f && cameraPosition.z <= 12.5f)) {
+		if (abs(cameraPosition.x - (7.5f)) < abs(cameraPosition.x - (12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+			cameraPosition.x = 7.5f;
+		else if (abs(cameraPosition.x - (7.5f)) > abs(cameraPosition.x - (12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+			cameraPosition.x = 12.5f;
+		else if (abs(cameraPosition.z - (7.5f)) < abs(cameraPosition.z - (12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+			cameraPosition.z = 7.5f;
+		else if (abs(cameraPosition.z - (7.5f)) > abs(cameraPosition.z - (12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+			cameraPosition.z = 12.5f;
+	}
+
+	// Stand 3
+	if ((cameraPosition.x <= -7.5f && cameraPosition.x >= -12.5f) && (cameraPosition.z <= -7.5f && cameraPosition.z >= -12.5f)) {
+		if (abs(cameraPosition.x - (-7.5f)) < abs(cameraPosition.x - (-12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+			cameraPosition.x = -7.5f;
+		else if (abs(cameraPosition.x - (-7.5f)) > abs(cameraPosition.x - (-12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+			cameraPosition.x = -12.5f;
+		else if (abs(cameraPosition.z - (-7.5f)) < abs(cameraPosition.z - (-12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+			cameraPosition.z = -7.5f;
+		else if (abs(cameraPosition.z - (-7.5f)) > abs(cameraPosition.z - (-12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+			cameraPosition.z = -12.5f;
+	}
+
+	// Stand 4
+	if ((cameraPosition.x >= 7.5f && cameraPosition.x <= 12.5f) && (cameraPosition.z <= -7.5f && cameraPosition.z >= -12.5f)) {
+		if (abs(cameraPosition.x - (7.5f)) < abs(cameraPosition.x - (12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+			cameraPosition.x = 7.5f;
+		else if (abs(cameraPosition.x - (7.5f)) > abs(cameraPosition.x - (12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+			cameraPosition.x = 12.5f;
+		else if (abs(cameraPosition.z - (-7.5f)) < abs(cameraPosition.z - (-12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+			cameraPosition.z = -7.5f;
+		else if (abs(cameraPosition.z - (-7.5f)) > abs(cameraPosition.z - (-12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+			cameraPosition.z = -12.5f;
+	}
+
+	previousX = cameraPosition.x;
+	previousZ = cameraPosition.z;
+
+	std::cout << "x: " << cameraPosition.x << std::endl;
+	std::cout << "z: " << cameraPosition.z << std::endl;
 
 	if (action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
 		// Tell OpenGL to display the cursor if it is hidden and vice versa
