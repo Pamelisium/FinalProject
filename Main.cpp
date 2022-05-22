@@ -756,10 +756,29 @@ int main()
 		glUniform3f(lightAmbientUniformLocation, 0.2f, 0.2f, 0.2f);
 
 		GLint lightDiffuseUniformLocation = glGetUniformLocation(program, "lightDiffuse");
-		glUniform3f(lightDiffuseUniformLocation, 1.0f, 1.0f, 1.0f);
+		glUniform3f(lightDiffuseUniformLocation, 0.8f, 0.8f, 1.0f);
 
 		GLint lightSpecularUniformLocation = glGetUniformLocation(program, "lightSpecular");
 		glUniform3f(lightSpecularUniformLocation, 0.5f, 0.5f, 0.5f);
+
+		// Uniform variables for spot light
+		GLint spotlightPositionUniformLocation = glGetUniformLocation(program, "spotlightPosition");
+		glUniform3f(spotlightPositionUniformLocation, -10.0f, 20.0f, 10.0f);
+
+		GLint spotlightAmbientUniformLocation = glGetUniformLocation(program, "spotlightAmbient");
+		glUniform3f(spotlightAmbientUniformLocation, 0.2f, 0.2f, 0.1f);
+
+		GLint spotlightDiffuseUniformLocation = glGetUniformLocation(program, "spotlightDiffuse");
+		glUniform3f(spotlightDiffuseUniformLocation, 0.8f, 0.8f, 0.2f);
+
+		GLint spotlightSpecularUniformLocation = glGetUniformLocation(program, "spotlightSpecular");
+		glUniform3f(spotlightSpecularUniformLocation, 0.75f, 0.75f, 0.75f);
+
+		GLint spotlightTargetUniformLocation = glGetUniformLocation(program, "spotlightTarget");
+		glUniform3f(spotlightTargetUniformLocation, 0.0f, -1.0f, 0.0f);
+
+		GLint spotlightCutoffUniformLocation = glGetUniformLocation(program, "spotlightCutoff");
+		glUniform1f(spotlightCutoffUniformLocation, glm::cos(glm::radians(7.5f)));
 
 		// Uniform variables for object
 		GLint objectSpecularUniformLocation = glGetUniformLocation(program, "objectSpecular");
