@@ -182,7 +182,7 @@ int main()
 	// --- Vertex specification ---
 	
 	// Set up the data for each vertex of the triangle
-	Vertex vertices[48];
+	Vertex vertices[64];
 
 	// --- Room ---
 
@@ -419,26 +419,112 @@ int main()
 	vertices[43].u = (float)2/3;	vertices[43].v = (float)2/3;
 	vertices[43].nx = 0.0f;			vertices[43].ny = 1.0f;			vertices[43].nz = 0.0f;
 
-	// Bottom Square
-	vertices[44].x = 0.5f;			vertices[44].y = -0.8f;			vertices[44].z = -0.5f;
+	// --- Square Painting ---
+
+	// Front Square
+	vertices[44].x = -0.5f;			vertices[44].y = -0.5f;			vertices[44].z = -0.5f;
 	vertices[44].r = 255;			vertices[44].g = 255;			vertices[44].b = 255;
-	vertices[44].u = (float)1/3;	vertices[44].v = (float)1/3;
-	vertices[44].nx = 0.0f;			vertices[44].ny = -1.0f;		vertices[44].nz = 0.0f;
+	vertices[44].u = 0.0f;			vertices[44].v = (float)2/3;
+	vertices[44].nx = 0.0f;			vertices[44].ny = 0.0f;			vertices[44].nz = 1.0f;
 
-	vertices[45].x = 0.5f;			vertices[45].y = -0.8f;			vertices[45].z = 0.5f;
+	vertices[45].x = -0.5f;			vertices[45].y = 0.5f;			vertices[45].z = -0.5f;
 	vertices[45].r = 255;			vertices[45].g = 255;			vertices[45].b = 255;
-	vertices[45].u = (float)1/3;	vertices[45].v = (float)2/3;
-	vertices[45].nx = 0.0f;			vertices[45].ny = -1.0f;		vertices[45].nz = 0.0f;
+	vertices[45].u = 0.0f;			vertices[45].v = 1.0f;
+	vertices[45].nx = 0.0f;			vertices[45].ny = 0.0f;			vertices[45].nz = 1.0f;
 
-	vertices[46].x = -0.5f;			vertices[46].y = -0.8f;			vertices[46].z = 0.5f;
+	vertices[46].x = 0.5f;			vertices[46].y = 0.5f;			vertices[46].z = -0.5f;
 	vertices[46].r = 255;			vertices[46].g = 255;			vertices[46].b = 255;
-	vertices[46].u = (float)2/3;	vertices[46].v = (float)2/3;
-	vertices[46].nx = 0.0f;			vertices[46].ny = -1.0f;		vertices[46].nz = 0.0f;
+	vertices[46].u = (float)1/3;	vertices[46].v = 1.0f;
+	vertices[46].nx = 0.0f;			vertices[46].ny = 0.0f;			vertices[46].nz = 1.0f;
 
-	vertices[47].x = -0.5f;			vertices[47].y = -0.8f;			vertices[47].z = -0.5f;
+	vertices[47].x = 0.5f;			vertices[47].y = -0.5f;			vertices[47].z = -0.5f;
 	vertices[47].r = 255;			vertices[47].g = 255;			vertices[47].b = 255;
-	vertices[47].u = (float)2/3;	vertices[47].v = (float)1/3;
-	vertices[47].nx = 0.0f;			vertices[47].ny = -1.0f;		vertices[47].nz = 0.0f;
+	vertices[47].u = (float)1/3;	vertices[47].v = (float)2/3;
+	vertices[47].nx = 0.0f;			vertices[47].ny = 0.0f;			vertices[47].nz = 1.0f;
+
+	// Right Rectangle
+	vertices[48].x = -0.5f;			vertices[48].y = -0.5f;			vertices[48].z = 0.0f;
+	vertices[48].r = 255;			vertices[48].g = 255;			vertices[48].b = 255;
+	vertices[48].u = 0.0f;			vertices[48].v = (float)1/3;
+	vertices[48].nx = 1.0f;			vertices[48].ny = 0.0f;			vertices[48].nz = 0.0f;
+
+	vertices[49].x = -0.5f;			vertices[49].y = 0.5f;			vertices[49].z = 0.0f;
+	vertices[49].r = 255;			vertices[49].g = 255;			vertices[49].b = 255;
+	vertices[49].u = 0.0f;			vertices[49].v = (float)2/3;
+	vertices[49].nx = 1.0f;			vertices[49].ny = 0.0f;			vertices[49].nz = 0.0f;
+
+	vertices[50].x = -0.5f;			vertices[50].y = 0.5f;			vertices[50].z = -0.5f;
+	vertices[50].r = 255;			vertices[50].g = 255;			vertices[50].b = 255;
+	vertices[50].u = (float)1/3;	vertices[50].v = (float)2/3;
+	vertices[50].nx = 1.0f;			vertices[50].ny = 0.0f;			vertices[50].nz = 0.0f;
+
+	vertices[51].x = -0.5f;			vertices[51].y = -0.5f;			vertices[51].z = -0.5f;
+	vertices[51].r = 255;			vertices[51].g = 255;			vertices[51].b = 255;
+	vertices[51].u = (float)1/3;	vertices[51].v = (float)1/3;
+	vertices[51].nx = 1.0f;			vertices[51].ny = 0.0f;			vertices[51].nz = 0.0f;
+
+	// Left Rectangle
+	vertices[52].x = 0.5f;			vertices[52].y = -0.5f;			vertices[52].z = -0.5f;
+	vertices[52].r = 255;			vertices[52].g = 255;			vertices[52].b = 255;
+	vertices[52].u = (float)2/3;	vertices[52].v = (float)2/3;
+	vertices[52].nx = -1.0f;		vertices[52].ny = 0.0f;			vertices[52].nz = 0.0f;
+
+	vertices[53].x = 0.5f;			vertices[53].y = 0.5f;			vertices[53].z = -0.5f;
+	vertices[53].r = 255;			vertices[53].g = 255;			vertices[53].b = 255;
+	vertices[53].u = (float)2/3;	vertices[53].v = 1.0f;
+	vertices[53].nx = -1.0f;		vertices[53].ny = 0.0f;			vertices[53].nz = 0.0f;
+
+	vertices[54].x = 0.5f;			vertices[54].y = 0.5f;			vertices[54].z = 0.0f;
+	vertices[54].r = 255;			vertices[54].g = 255;			vertices[54].b = 255;
+	vertices[54].u = 1.0f;			vertices[54].v = 1.0f;
+	vertices[54].nx = -1.0f;		vertices[54].ny = 0.0f;			vertices[54].nz = 0.0f;
+
+	vertices[55].x = 0.5f;			vertices[55].y = -0.5f;			vertices[55].z = 0.0f;
+	vertices[55].r = 255;			vertices[55].g = 255;			vertices[55].b = 255;
+	vertices[55].u = 1.0f;			vertices[55].v = (float)2/3;
+	vertices[55].nx = -1.0f;		vertices[55].ny = 0.0f;			vertices[55].nz = 0.0f;
+
+	// Top Rectangle
+	vertices[56].x = -0.5f;			vertices[56].y = 0.5f;			vertices[56].z = -0.5f;
+	vertices[56].r = 255;			vertices[56].g = 255;			vertices[56].b = 255;
+	vertices[56].u = (float)1/3;	vertices[56].v = (float)2/3;
+	vertices[56].nx = 0.0f;			vertices[56].ny = -1.0f;		vertices[56].nz = 0.0f;
+
+	vertices[57].x = -0.5f;			vertices[57].y = 0.5f;			vertices[57].z = 0.0f;
+	vertices[57].r = 255;			vertices[57].g = 255;			vertices[57].b = 255;
+	vertices[57].u = (float)1/3;	vertices[57].v = 1.0f;
+	vertices[57].nx = 0.0f;			vertices[57].ny = -1.0f;		vertices[57].nz = 0.0f;
+
+	vertices[58].x = 0.5f;			vertices[58].y = 0.5f;			vertices[58].z = 0.0f;
+	vertices[58].r = 255;			vertices[58].g = 255;			vertices[58].b = 255;
+	vertices[58].u = (float)2/3;	vertices[58].v = 1.0f;
+	vertices[58].nx = 0.0f;			vertices[58].ny = -1.0f;		vertices[58].nz = 0.0f;
+
+	vertices[59].x = 0.5f;			vertices[59].y = 0.5f;			vertices[59].z = -0.5f;
+	vertices[59].r = 255;			vertices[59].g = 255;			vertices[59].b = 255;
+	vertices[59].u = (float)2/3;	vertices[59].v = (float)2/3;
+	vertices[59].nx = 0.0f;			vertices[59].ny = -1.0f;		vertices[59].nz = 0.0f;
+
+	// Bottom Rectangle
+	vertices[60].x = 0.5f;			vertices[60].y = -0.5f;			vertices[60].z = -0.5f;
+	vertices[60].r = 255;			vertices[60].g = 255;			vertices[60].b = 255;
+	vertices[60].u = (float)1/3;	vertices[60].v = (float)1/3;
+	vertices[60].nx = 0.0f;			vertices[60].ny = 1.0f;			vertices[60].nz = 0.0f;
+
+	vertices[61].x = 0.5f;			vertices[61].y = -0.5f;			vertices[61].z = 0.0f;
+	vertices[61].r = 255;			vertices[61].g = 255;			vertices[61].b = 255;
+	vertices[61].u = (float)1/3;	vertices[61].v = (float)2/3;
+	vertices[61].nx = 0.0f;			vertices[61].ny = 1.0f;			vertices[61].nz = 0.0f;
+
+	vertices[62].x = -0.5f;			vertices[62].y = -0.5f;			vertices[62].z = 0.0f;
+	vertices[62].r = 255;			vertices[62].g = 255;			vertices[62].b = 255;
+	vertices[62].u = (float)2/3;	vertices[62].v = (float)2/3;
+	vertices[62].nx = 0.0f;			vertices[62].ny = 1.0f;			vertices[62].nz = 0.0f;
+
+	vertices[63].x = -0.5f;			vertices[63].y = -0.5f;			vertices[63].z = -0.5f;
+	vertices[63].r = 255;			vertices[63].g = 255;			vertices[63].b = 255;
+	vertices[63].u = (float)2/3;	vertices[63].v = (float)1/3;
+	vertices[63].nx = 0.0f;			vertices[63].ny = 1.0f;			vertices[63].nz = 0.0f;
 
 	// Create a vertex buffer object (VBO), and upload our vertices data to the VBO
 	GLuint vbo;
@@ -523,6 +609,9 @@ int main()
 		// the data on the CPU side, since we won't be using it anymore
 		stbi_image_free(imageData);
 		imageData = nullptr;
+
+		// "Unuse" the GL_TEXTURE_2D target
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 	else
 	{
@@ -635,7 +724,6 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 32, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
 
 		// --- Stand 2 ---
 
@@ -659,7 +747,6 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 32, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
 
 		// --- Stand 3 ---
 
@@ -683,7 +770,6 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 32, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
-		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
 
 		// --- Stand 4 ---
 
@@ -707,7 +793,29 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 32, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
+
+		// --- Painting 1 ---
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 24.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 2.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
 		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 48, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 52, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 56, 4);
+		glDrawArrays(GL_TRIANGLE_FAN, 60, 4);
 
 		// "Unuse" the vertex array object
 		glBindVertexArray(0);
@@ -869,60 +977,59 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (abs(cameraPosition.z) > 23.0f) cameraPosition.z = cameraPosition.z / abs(cameraPosition.z) * 23.0f;
 
 	// --- Handling collisions with 3D model Stands ---
+	float xDiff = abs(cameraPosition.x - previousX);
+	float zDiff = abs(cameraPosition.z - previousZ);
 
 	// Stand 1
 	if ((cameraPosition.x <= -7.5f && cameraPosition.x >= -12.5f) && (cameraPosition.z >= 7.5f && cameraPosition.z <= 12.5f)) {
-		if (abs(cameraPosition.x - (-7.5f)) < abs(cameraPosition.x - (-12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+		if (abs(cameraPosition.x - (-7.5f)) < abs(cameraPosition.x - (-12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = -7.5f;
-		else if (abs(cameraPosition.x - (-7.5f)) > abs(cameraPosition.x - (-12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+		else if (abs(cameraPosition.x - (-7.5f)) > abs(cameraPosition.x - (-12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = -12.5f;
-		else if (abs(cameraPosition.z - (7.5f)) < abs(cameraPosition.z - (12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+		else if (abs(cameraPosition.z - (7.5f)) < abs(cameraPosition.z - (12.5f)) && zDiff > 0.12f)
 			cameraPosition.z = 7.5f;
-		else if (abs(cameraPosition.z - (7.5f)) > abs(cameraPosition.z - (12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+		else if (abs(cameraPosition.z - (7.5f)) > abs(cameraPosition.z - (12.5f)) && zDiff > 0.12f)
 			cameraPosition.z = 12.5f;
 	}
 
 	// Stand 2
 	if ((cameraPosition.x >= 7.5f && cameraPosition.x <= 12.5f) && (cameraPosition.z >= 7.5f && cameraPosition.z <= 12.5f)) {
-		if (abs(cameraPosition.x - (7.5f)) < abs(cameraPosition.x - (12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+		if (abs(cameraPosition.x - (7.5f)) < abs(cameraPosition.x - (12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = 7.5f;
-		else if (abs(cameraPosition.x - (7.5f)) > abs(cameraPosition.x - (12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+		else if (abs(cameraPosition.x - (7.5f)) > abs(cameraPosition.x - (12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = 12.5f;
-		else if (abs(cameraPosition.z - (7.5f)) < abs(cameraPosition.z - (12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+		else if (abs(cameraPosition.z - (7.5f)) < abs(cameraPosition.z - (12.5f)) && zDiff > 0.12f)
 			cameraPosition.z = 7.5f;
-		else if (abs(cameraPosition.z - (7.5f)) > abs(cameraPosition.z - (12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+		else if (abs(cameraPosition.z - (7.5f)) > abs(cameraPosition.z - (12.5f)) && zDiff > 0.12f)
 			cameraPosition.z = 12.5f;
 	}
 
 	// Stand 3
 	if ((cameraPosition.x <= -7.5f && cameraPosition.x >= -12.5f) && (cameraPosition.z <= -7.5f && cameraPosition.z >= -12.5f)) {
-		if (abs(cameraPosition.x - (-7.5f)) < abs(cameraPosition.x - (-12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+		if (abs(cameraPosition.x - (-7.5f)) < abs(cameraPosition.x - (-12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = -7.5f;
-		else if (abs(cameraPosition.x - (-7.5f)) > abs(cameraPosition.x - (-12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+		else if (abs(cameraPosition.x - (-7.5f)) > abs(cameraPosition.x - (-12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = -12.5f;
-		else if (abs(cameraPosition.z - (-7.5f)) < abs(cameraPosition.z - (-12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+		else if (abs(cameraPosition.z - (-7.5f)) < abs(cameraPosition.z - (-12.5f)) && zDiff > 0.12f)
 			cameraPosition.z = -7.5f;
-		else if (abs(cameraPosition.z - (-7.5f)) > abs(cameraPosition.z - (-12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+		else if (abs(cameraPosition.z - (-7.5f)) > abs(cameraPosition.z - (-12.5f)) && zDiff > 0.12f)
 			cameraPosition.z = -12.5f;
 	}
 
 	// Stand 4
 	if ((cameraPosition.x >= 7.5f && cameraPosition.x <= 12.5f) && (cameraPosition.z <= -7.5f && cameraPosition.z >= -12.5f)) {
-		if (abs(cameraPosition.x - (7.5f)) < abs(cameraPosition.x - (12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+		if (abs(cameraPosition.x - (7.5f)) < abs(cameraPosition.x - (12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = 7.5f;
-		else if (abs(cameraPosition.x - (7.5f)) > abs(cameraPosition.x - (12.5f)) && abs(cameraPosition.x - previousX) > 0.12f)
+		else if (abs(cameraPosition.x - (7.5f)) > abs(cameraPosition.x - (12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = 12.5f;
-		else if (abs(cameraPosition.z - (-7.5f)) < abs(cameraPosition.z - (-12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+		else if (abs(cameraPosition.z - (-7.5f)) < abs(cameraPosition.z - (-12.5f)) && zDiff > 0.12f)
 			cameraPosition.z = -7.5f;
-		else if (abs(cameraPosition.z - (-7.5f)) > abs(cameraPosition.z - (-12.5f)) && abs(cameraPosition.z - previousZ) > 0.12f)
+		else if (abs(cameraPosition.z - (-7.5f)) > abs(cameraPosition.z - (-12.5f)) && zDiff > 0.12f)
 			cameraPosition.z = -12.5f;
 	}
 
 	previousX = cameraPosition.x;
 	previousZ = cameraPosition.z;
-
-	std::cout << "x: " << cameraPosition.x << std::endl;
-	std::cout << "z: " << cameraPosition.z << std::endl;
 
 	if (action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
 		// Tell OpenGL to display the cursor if it is hidden and vice versa
