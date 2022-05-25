@@ -644,7 +644,7 @@ int main()
 	int k1 = 0;
 	int l1 = 84;
 
-	FILE * file1 = fopen("3D-MODEL-Nefertiti-Bust.obj", "r");
+	FILE * file1 = fopen("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Nefertiti-Bust.obj", "r");
 	if( file1 == NULL ){
     	printf("Impossible to open the file !\n");
     	return false;
@@ -709,7 +709,7 @@ int main()
 	int k2 = 0;
 	int l2 = 84+56334;
 
-	FILE * file2 = fopen("3D-MODEL-Suzanne-Monkey.obj", "r");
+	FILE * file2 = fopen("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Suzanne-Monkey.obj", "r");
 	if( file2 == NULL ){
     	printf("Impossible to open the file !\n");
     	return false;
@@ -775,7 +775,7 @@ int main()
 	int k3 = 0;
 	int l3 = 84+56334+2904;
 
-	FILE * file3 = fopen("3D-MODEL-Asian-Vase.obj", "r");
+	FILE * file3 = fopen("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Asian-Vase.obj", "r");
 	if( file3 == NULL ){
     	printf("Impossible to open the file !\n");
     	return false;
@@ -846,7 +846,7 @@ int main()
 	int k4 = 0;
 	int l4 = 84+56334+2904+13984;
 
-	FILE * file4 = fopen("3D-MODEL-Jaguar-Skull.obj", "r");
+	FILE * file4 = fopen("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Jaguar-Skull.obj", "r");
 	if( file4 == NULL ){
     	printf("Impossible to open the file !\n");
     	return false;
@@ -946,6 +946,7 @@ int main()
 	// For now, tell OpenGL to use the whole screen
 	glViewport(0, 0, windowWidth, windowHeight);
 
+
 	// Textures
 	
 	// --- Room Textures ---
@@ -967,7 +968,7 @@ int main()
 	int imageWidth, imageHeight, numChannels;
 
 	// Read the image data and store it in an unsigned char array
-	unsigned char* imageData = stbi_load("CubeMap-FrontWall.png", &imageWidth, &imageHeight, &numChannels, 0);
+	unsigned char* imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/CubeMap-FrontWall.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	// Make sure that we actually loaded the image before uploading the data to the GPU
 	if (imageData != nullptr)
@@ -1002,7 +1003,7 @@ int main()
 	GLuint tex1;
 	glGenTextures(1, &tex1);
 
-	imageData = stbi_load("CubeMap-BackWall.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/CubeMap-BackWall.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1027,7 +1028,7 @@ int main()
 	GLuint tex2;
 	glGenTextures(1, &tex2);
 
-	imageData = stbi_load("CubeMap-LeftRightWall.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/CubeMap-LeftRightWall.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1052,7 +1053,7 @@ int main()
 	GLuint tex3;
 	glGenTextures(1, &tex3);
 
-	imageData = stbi_load("CubeMap-Ceiling.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/CubeMap-Ceiling.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1077,7 +1078,7 @@ int main()
 	GLuint tex4;
 	glGenTextures(1, &tex4);
 
-	imageData = stbi_load("CubeMap-Floor.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/CubeMap-Floor.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1104,7 +1105,7 @@ int main()
 	GLuint tex5;
 	glGenTextures(1, &tex5);
 
-	imageData = stbi_load("PLATFORM-Wood.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/PLATFORM-Wood.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1131,7 +1132,7 @@ int main()
 	GLuint tex6;
 	glGenTextures(1, &tex6);
 
-	imageData = stbi_load("PAINTING-Mona-Lisa.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/PAINTING-Mona-Lisa.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1156,7 +1157,7 @@ int main()
 	GLuint tex7;
 	glGenTextures(1, &tex7);
 
-	imageData = stbi_load("PAINTING-The-Starry-Night.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/PAINTING-The-Starry-Night.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1181,7 +1182,7 @@ int main()
 	GLuint tex8;
 	glGenTextures(1, &tex8);
 
-	imageData = stbi_load("PAINTING-The-Great-Wave-off-Kanagawa.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/PAINTING-The-Great-Wave-off-Kanagawa.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1206,7 +1207,7 @@ int main()
 	GLuint tex9;
 	glGenTextures(1, &tex9);
 
-	imageData = stbi_load("PAINTING-The-Birth-of-Venus.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/PAINTING-The-Birth-of-Venus.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1231,7 +1232,7 @@ int main()
 	GLuint tex10;
 	glGenTextures(1, &tex10);
 
-	imageData = stbi_load("PAINTING-Girl-with-a-Pearl-Earring.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/PAINTING-Girl-with-a-Pearl-Earring.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1256,7 +1257,7 @@ int main()
 	GLuint tex11;
 	glGenTextures(1, &tex11);
 
-	imageData = stbi_load("PAINTING-The-Scream.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/PAINTING-The-Scream.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
@@ -1281,11 +1282,113 @@ int main()
 	GLuint tex12;
 	glGenTextures(1, &tex12);
 
-	imageData = stbi_load("PAINTING-Frame.png", &imageWidth, &imageHeight, &numChannels, 0);
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/PAINTING-Frame.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	if (imageData != nullptr)
 	{
 		glBindTexture(GL_TEXTURE_2D, tex12);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	// --- 3D Model Textures ---
+
+	GLuint tex13;
+	glGenTextures(1, &tex13);
+
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Nefertiti-Bust.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex13);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex14;
+	glGenTextures(1, &tex14);
+
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Suzanne-Monkey.jpeg", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex14);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex15;
+	glGenTextures(1, &tex15);
+
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Asian-Vase.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex15);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex16;
+	glGenTextures(1, &tex16);
+
+	imageData = stbi_load("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Jaguar-Skull.jpeg", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex16);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -1318,14 +1421,6 @@ int main()
 		// Use the vertex array object that we created
 		glBindVertexArray(vao);
 
-		// Bind our texture to texture unit 0
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, tex);
-
-		// Make our sampler in the fragment shader use texture unit 0
-		GLint texUniformLocation = glGetUniformLocation(program, "tex");
-		glUniform1i(texUniformLocation, 0);
-
 		// Uniform variables for point light
 		GLint lightPositionUniformLocation = glGetUniformLocation(program, "lightPosition");
 		glUniform3f(lightPositionUniformLocation, 0.0f, 0.0f, 0.0f);
@@ -1356,7 +1451,7 @@ int main()
 		glUniform3f(spotlightAmbientUniformLocation, 0.2f, 0.2f, 0.1f);
 
 		GLint spotlightDiffuseUniformLocation = glGetUniformLocation(program, "spotlightDiffuse");
-		glUniform3f(spotlightDiffuseUniformLocation, 0.8f, 0.8f, 0.4f);
+		glUniform3f(spotlightDiffuseUniformLocation, 0.8f, 0.8f, 0.05f);
 
 		GLint spotlightSpecularUniformLocation = glGetUniformLocation(program, "spotlightSpecular");
 		glUniform3f(spotlightSpecularUniformLocation, 0.5f, 0.5f, 0.5f);
@@ -1814,6 +1909,136 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 56, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 60, 4);
 
+		// --- 3D Models ---
+
+		// --- Nefertiti Bust ---
+
+		// Bind our texture to texture unit 13
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex13);
+
+		// Make our sampler in the fragment shader use texture unit 13
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, -12.0f, 10.0f));
+		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f/6.0f, 0.1f/6.0f, 0.1f/6.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		int i = 84;
+		while (i!=84+56334){
+			glDrawArrays(GL_TRIANGLES, i, 3);
+			i+=3;
+		}
+
+		// --- Suzanne Monkey ---
+
+		// Bind our texture to texture unit 14
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex14);
+
+		// Make our sampler in the fragment shader use texture unit 14
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(10.0f, -13.5f, 10.0f));
+		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		i = 84+56334;
+		while (i!=84+56334+2904){
+			glDrawArrays(GL_TRIANGLES, i, 3);
+			i+=3;
+		}
+
+		// --- Asian Vase ---
+
+		// Bind our texture to texture unit 15
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex15);
+
+		// Make our sampler in the fragment shader use texture unit 15
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, -16.0f, -10.0f));
+		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.7f/40.0f, 0.7f/40.0f, 0.7f/40.0f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		i = 84+56334+2904;
+		while (i!=84+56334+2904+13984){
+			glDrawArrays(GL_TRIANGLE_FAN, i, 4);
+			i+=4;
+		}
+
+		// --- Jaguar Skull ---
+
+		// Bind our texture to texture unit 16
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex16);
+
+		// Make our sampler in the fragment shader use texture unit 16
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
+		// Model Matrix
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(10.0f, -15.5f, -10.0f));
+		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 4.8f));
+
+		// Normal Matrix
+		normal = glm::transpose(glm::inverse(model));
+
+		// Uniform variables
+		modelUniformLocation = glGetUniformLocation(program, "model");
+		glUniformMatrix4fv(modelUniformLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		normMatrixUniformLocation = glGetUniformLocation(program, "normMatrix");
+		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
+
+		// Draw the vertices using triangle primitives
+		i = 84+56334+2904+13984;
+		while (i!=84+56334+2904+13984+11988){
+			glDrawArrays(GL_TRIANGLE_FAN, i, 4);
+			i+=4;
+		}
+
 		// "Unuse" the vertex array object
 		glBindVertexArray(0);
 
@@ -1973,11 +2198,11 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (cameraPosition.y != -15.0f) cameraPosition.y = -15.0f;
 	if (abs(cameraPosition.z) > 23.0f) cameraPosition.z = cameraPosition.z / abs(cameraPosition.z) * 23.0f;
 
-	// --- Handling collisions with 3D model Stands ---
+	// --- Handling collisions with 3D model Platforms ---
 	float xDiff = abs(cameraPosition.x - previousX);
 	float zDiff = abs(cameraPosition.z - previousZ);
 
-	// Stand 1
+	// Platform 1
 	if ((cameraPosition.x <= -7.5f && cameraPosition.x >= -12.5f) && (cameraPosition.z >= 7.5f && cameraPosition.z <= 12.5f)) {
 		if (abs(cameraPosition.x - (-7.5f)) < abs(cameraPosition.x - (-12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = -7.5f;
@@ -1989,7 +2214,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 			cameraPosition.z = 12.5f;
 	}
 
-	// Stand 2
+	// Platform 2
 	if ((cameraPosition.x >= 7.5f && cameraPosition.x <= 12.5f) && (cameraPosition.z >= 7.5f && cameraPosition.z <= 12.5f)) {
 		if (abs(cameraPosition.x - (7.5f)) < abs(cameraPosition.x - (12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = 7.5f;
@@ -2001,7 +2226,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 			cameraPosition.z = 12.5f;
 	}
 
-	// Stand 3
+	// Platform 3
 	if ((cameraPosition.x <= -7.5f && cameraPosition.x >= -12.5f) && (cameraPosition.z <= -7.5f && cameraPosition.z >= -12.5f)) {
 		if (abs(cameraPosition.x - (-7.5f)) < abs(cameraPosition.x - (-12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = -7.5f;
@@ -2013,7 +2238,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 			cameraPosition.z = -12.5f;
 	}
 
-	// Stand 4
+	// Platform 4
 	if ((cameraPosition.x >= 7.5f && cameraPosition.x <= 12.5f) && (cameraPosition.z <= -7.5f && cameraPosition.z >= -12.5f)) {
 		if (abs(cameraPosition.x - (7.5f)) < abs(cameraPosition.x - (12.5f)) && xDiff > 0.12f)
 			cameraPosition.x = 7.5f;
