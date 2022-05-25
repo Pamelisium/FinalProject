@@ -4,6 +4,6 @@ To walk around the room, use arrow keys or W-A-S-D keys.
 
 To look around the room, move the mouse.
 
-To display/hide the mouse cursor, use the escape (ESC) key.
+To uncapture/capture the mouse cursor, use the escape (ESC) key.
 
 Copyright © Jhorcen P. Mendoza and Pamela Anne C. Serrano  2022.
