@@ -83,8 +83,8 @@ struct Vertex
 /// <summary>
 /// Camera variables
 /// </summary>
-glm::vec3 cameraPosition = glm::vec3(0.0f, -15.0f, 0.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraPosition = glm::vec3(-23.0f, -15.0f, 0.0f);
+glm::vec3 cameraFront = glm::vec3(1.0f, 0.0f, 0.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
 /// <summary>
