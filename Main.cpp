@@ -1119,7 +1119,7 @@ int main()
 		GLint cameraPositionUniformLocation = glGetUniformLocation(program, "cameraPosition");
 		glUniform3fv(cameraPositionUniformLocation, 3, glm::value_ptr(cameraPosition));
 
-		// ---- Room ----
+		// ----- Room -----
 
 		// Bind our texture to texture unit 0
 		glActiveTexture(GL_TEXTURE0);
