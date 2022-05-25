@@ -1121,6 +1121,14 @@ int main()
 
 		// --- Room ---
 
+		// Bind our texture to texture unit 0
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex0);
+
+		// Make our sampler in the fragment shader use texture unit 0
+		GLint texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		// Model Matrix
 		glm::mat4 model = glm::scale(glm::mat4(1.0f), glm::vec3(50.0f, 50.0f, 50.0f));
 
@@ -1136,13 +1144,61 @@ int main()
 
 		// Draw the vertices using triangle primitives
 		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
+		// Bind our texture to texture unit 1
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex1);
+
+		// Make our sampler in the fragment shader use texture unit 1
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
 		glDrawArrays(GL_TRIANGLE_FAN, 4, 4);
+
+		// Bind our texture to texture unit 2
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex2);
+
+		// Make our sampler in the fragment shader use texture unit 2
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
 		glDrawArrays(GL_TRIANGLE_FAN, 8, 4);
+
+		// Bind our texture to texture unit 2
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex2);
+
+		// Make our sampler in the fragment shader use texture unit 2
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
 		glDrawArrays(GL_TRIANGLE_FAN, 12, 4);
+
+		// Bind our texture to texture unit 3
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex3);
+
+		// Make our sampler in the fragment shader use texture unit 3
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
 		glDrawArrays(GL_TRIANGLE_FAN, 16, 4);
+
+		// Bind our texture to texture unit 4
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex4);
+
+		// Make our sampler in the fragment shader use texture unit 4
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
 		glDrawArrays(GL_TRIANGLE_FAN, 20, 4);
 
-		// --- Stand 1 ---
+		// --- Platform 1 ---
+
+		// Bind our texture to texture unit 5
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex5);
+
+		// Make our sampler in the fragment shader use texture unit 5
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, -21.0f, 10.0f));
@@ -1165,7 +1221,7 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
 
-		// --- Stand 2 ---
+		// --- Platform 2 ---
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(10.0f, -21.0f, 10.0f));
@@ -1188,7 +1244,7 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
 
-		// --- Stand 3 ---
+		// --- Platform 3 ---
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, -21.0f, -10.0f));
@@ -1211,7 +1267,7 @@ int main()
 		glDrawArrays(GL_TRIANGLE_FAN, 36, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 40, 4);
 
-		// --- Stand 4 ---
+		// --- Platform 4 ---
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(10.0f, -21.0f, -10.0f));
@@ -1236,8 +1292,16 @@ int main()
 
 		// --- Painting 1: Solo Vertical ---
 
+		// Bind our texture to texture unit 6
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex6);
+
+		// Make our sampler in the fragment shader use texture unit 6
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 24.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 2.0f, 24.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 		model = glm::scale(model, glm::vec3(17.5f, 17.5f, 2.0f));
 
@@ -1253,12 +1317,29 @@ int main()
 
 		// Draw the vertices using triangle primitives
 		glDrawArrays(GL_TRIANGLE_FAN, 64, 4);
+
+		// Bind our texture to texture unit 12
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex12);
+
+		// Make our sampler in the fragment shader use texture unit 12
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		glDrawArrays(GL_TRIANGLE_FAN, 68, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 72, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 76, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 80, 4);
 
 		// --- Painting 2: Solo Horizontal ---
+
+		// Bind our texture to texture unit 7
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex7);
+
+		// Make our sampler in the fragment shader use texture unit 7
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -24.0f));
@@ -1277,6 +1358,15 @@ int main()
 
 		// Draw the vertices using triangle primitives
 		glDrawArrays(GL_TRIANGLE_FAN, 64, 4);
+
+		// Bind our texture to texture unit 12
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex12);
+
+		// Make our sampler in the fragment shader use texture unit 12
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		glDrawArrays(GL_TRIANGLE_FAN, 68, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 72, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 76, 4);
@@ -1286,8 +1376,16 @@ int main()
 
 		// --- Horizontal Painting ---
 
+		// Bind our texture to texture unit 8
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex8);
+
+		// Make our sampler in the fragment shader use texture unit 8
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-24.0f, 7.5f, 5.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-24.0f, 9.5f, 5.0f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(12.5f, 12.5f, 2.0f));
 
@@ -1303,6 +1401,15 @@ int main()
 
 		// Draw the vertices using triangle primitives
 		glDrawArrays(GL_TRIANGLE_FAN, 64, 4);
+
+		// Bind our texture to texture unit 12
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex12);
+
+		// Make our sampler in the fragment shader use texture unit 12
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		glDrawArrays(GL_TRIANGLE_FAN, 68, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 72, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 76, 4);
@@ -1310,8 +1417,16 @@ int main()
 
 		// --- Square Painting ---
 
+		// Bind our texture to texture unit 9
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex9);
+
+		// Make our sampler in the fragment shader use texture unit 9
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-24.0f, -7.5f, -7.5f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-24.0f, -5.5f, -7.5f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(12.5f, 12.5f, 2.0f));
 
@@ -1327,6 +1442,15 @@ int main()
 
 		// Draw the vertices using triangle primitives
 		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
+
+		// Bind our texture to texture unit 12
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex12);
+
+		// Make our sampler in the fragment shader use texture unit 12
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		glDrawArrays(GL_TRIANGLE_FAN, 48, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 52, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 56, 4);
@@ -1336,8 +1460,16 @@ int main()
 
 		// --- Vertical Painting ---
 
+		// Bind our texture to texture unit 10
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex10);
+
+		// Make our sampler in the fragment shader use texture unit 10
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(24.0f, 5.0f, -7.5f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(25.0f, 5.0f, -7.5f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 		model = glm::scale(model, glm::vec3(12.5f, 12.5f, 2.0f));
@@ -1354,6 +1486,15 @@ int main()
 
 		// Draw the vertices using triangle primitives
 		glDrawArrays(GL_TRIANGLE_FAN, 64, 4);
+
+		// Bind our texture to texture unit 12
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex12);
+
+		// Make our sampler in the fragment shader use texture unit 12
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		glDrawArrays(GL_TRIANGLE_FAN, 68, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 72, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 76, 4);
@@ -1361,8 +1502,16 @@ int main()
 
 		// --- Square Painting ---
 
+		// Bind our texture to texture unit 11
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex11);
+
+		// Make our sampler in the fragment shader use texture unit 11
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		// Model Matrix
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(24.0f, -7.5f, 7.5f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(25.0f, -3.5f, 7.5f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(12.5f, 12.5f, 2.0f));
 
@@ -1378,6 +1527,15 @@ int main()
 
 		// Draw the vertices using triangle primitives
 		glDrawArrays(GL_TRIANGLE_FAN, 44, 4);
+
+		// Bind our texture to texture unit 12
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, tex12);
+
+		// Make our sampler in the fragment shader use texture unit 12
+		texUniformLocation = glGetUniformLocation(program, "tex");
+		glUniform1i(texUniformLocation, 0);
+
 		glDrawArrays(GL_TRIANGLE_FAN, 48, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 52, 4);
 		glDrawArrays(GL_TRIANGLE_FAN, 56, 4);
