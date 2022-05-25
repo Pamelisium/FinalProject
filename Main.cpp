@@ -15,9 +15,9 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
-// ---------------
+// ----------------
 // Function declarations
-// ---------------
+// ----------------
 
 /// <summary>
 /// Creates a shader program based on the provided file paths for the vertex and fragment shaders.
