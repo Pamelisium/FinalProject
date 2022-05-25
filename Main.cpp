@@ -673,10 +673,14 @@ int main()
 	// For now, tell OpenGL to use the whole screen
 	glViewport(0, 0, windowWidth, windowHeight);
 
+	// Textures
+	
+	// --- Room Textures ---
+
 	// Create a variable that will contain the ID for our texture,
 	// and use glGenTextures() to generate the texture itself
-	GLuint tex;
-	glGenTextures(1, &tex);
+	GLuint tex0;
+	glGenTextures(1, &tex0);
 
 	// --- Load our image using stb_image ---
 
@@ -690,13 +694,13 @@ int main()
 	int imageWidth, imageHeight, numChannels;
 
 	// Read the image data and store it in an unsigned char array
-	unsigned char* imageData = stbi_load("cube.png", &imageWidth, &imageHeight, &numChannels, 0);
+	unsigned char* imageData = stbi_load("CubeMap-FrontWall.png", &imageWidth, &imageHeight, &numChannels, 0);
 
 	// Make sure that we actually loaded the image before uploading the data to the GPU
 	if (imageData != nullptr)
 	{
 		// Our texture is 2D, so we bind our texture to the GL_TEXTURE_2D target
-		glBindTexture(GL_TEXTURE_2D, tex);
+		glBindTexture(GL_TEXTURE_2D, tex0);
 
 		// Set the filtering methods for magnification and minification
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -716,9 +720,310 @@ int main()
 		// the data on the CPU side, since we won't be using it anymore
 		stbi_image_free(imageData);
 		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
 
-		// "Unuse" the GL_TEXTURE_2D target
-		glBindTexture(GL_TEXTURE_2D, 0);
+	GLuint tex1;
+	glGenTextures(1, &tex1);
+
+	imageData = stbi_load("CubeMap-BackWall.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex1);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex2;
+	glGenTextures(1, &tex2);
+
+	imageData = stbi_load("CubeMap-LeftRightWall.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex2);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex3;
+	glGenTextures(1, &tex3);
+
+	imageData = stbi_load("CubeMap-Ceiling.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex3);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex4;
+	glGenTextures(1, &tex4);
+
+	imageData = stbi_load("CubeMap-Floor.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex4);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	// --- Platform Texture ---
+
+	GLuint tex5;
+	glGenTextures(1, &tex5);
+
+	imageData = stbi_load("PLATFORM-Wood.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex5);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	// --- Painting Textures ---
+
+	GLuint tex6;
+	glGenTextures(1, &tex6);
+
+	imageData = stbi_load("PAINTING-Mona-Lisa.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex6);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex7;
+	glGenTextures(1, &tex7);
+
+	imageData = stbi_load("PAINTING-The-Starry-Night.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex7);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex8;
+	glGenTextures(1, &tex8);
+
+	imageData = stbi_load("PAINTING-The-Great-Wave-off-Kanagawa.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex8);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex9;
+	glGenTextures(1, &tex9);
+
+	imageData = stbi_load("PAINTING-The-Birth-of-Venus.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex9);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex10;
+	glGenTextures(1, &tex10);
+
+	imageData = stbi_load("PAINTING-Girl-with-a-Pearl-Earring.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex10);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex11;
+	glGenTextures(1, &tex11);
+
+	imageData = stbi_load("PAINTING-The-Scream.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex11);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
+	}
+	else
+	{
+		std::cerr << "Failed to load image" << std::endl;
+	}
+
+	GLuint tex12;
+	glGenTextures(1, &tex12);
+
+	imageData = stbi_load("PAINTING-Frame.png", &imageWidth, &imageHeight, &numChannels, 0);
+
+	if (imageData != nullptr)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex12);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+
+		stbi_image_free(imageData);
+		imageData = nullptr;
 	}
 	else
 	{
