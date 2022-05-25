@@ -644,7 +644,7 @@ int main()
 	int k1 = 0;
 	int l1 = 84;
 
-	FILE * file1 = fopen("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Nefertiti-Bust.obj", "r");
+	FILE * file1 = fopen("3D-MODEL-Nefertiti-Bust.obj", "r");
 	if( file1 == NULL ){
     	printf("Impossible to open the file !\n");
     	return false;
@@ -709,7 +709,7 @@ int main()
 	int k2 = 0;
 	int l2 = 84+56334;
 
-	FILE * file2 = fopen("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Suzanne-Monkey.obj", "r");
+	FILE * file2 = fopen("3D-MODEL-Suzanne-Monkey.obj", "r");
 	if( file2 == NULL ){
     	printf("Impossible to open the file !\n");
     	return false;
@@ -775,7 +775,7 @@ int main()
 	int k3 = 0;
 	int l3 = 84+56334+2904;
 
-	FILE * file3 = fopen("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Asian-Vase.obj", "r");
+	FILE * file3 = fopen("3D-MODEL-Asian-Vase.obj", "r");
 	if( file3 == NULL ){
     	printf("Impossible to open the file !\n");
     	return false;
@@ -846,7 +846,7 @@ int main()
 	int k4 = 0;
 	int l4 = 84+56334+2904+13984;
 
-	FILE * file4 = fopen("/Users/JhorcenMendoza/Documents/OpenGL/Projects/GDEV30_OpenGLSetup_Mac/GDEV30_OpenGLSetup_Mac/3D-MODEL-Jaguar-Skull.obj", "r");
+	FILE * file4 = fopen("3D-MODEL-Jaguar-Skull.obj", "r");
 	if( file4 == NULL ){
     	printf("Impossible to open the file !\n");
     	return false;
