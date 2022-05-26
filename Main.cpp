@@ -123,6 +123,41 @@ float previousX = cameraPosition.x;
 float previousZ = cameraPosition.z;
 
 /// <summary>
+/// Stores the coordinates for point light's diffuse light intensity
+/// </summary>
+glm::vec3 lightDiffuse = glm::vec3(0.8f, 0.8f, 0.8f);
+
+/// <summary>
+/// Stores the coordinates for point light's specular light intensity
+/// </summary>
+glm::vec3 lightSpecular = glm::vec3(0.5f, 0.5f, 0.5f);
+
+/// <summary>
+/// Indicates if point light is on
+/// </summary>
+bool pointLightOn = true;
+
+/// <summary>
+/// Stores the coordinates for spot lights' ambient light intensity
+/// </summary>
+glm::vec3 spotlightAmbient = glm::vec3(0.2f, 0.2f, 0.1f);
+
+/// <summary>
+/// Stores the coordinates for spot lights' diffuse light intensity
+/// </summary>
+glm::vec3 spotlightDiffuse = glm::vec3(0.8f, 0.8f, 0.05f);
+
+/// <summary>
+/// Stores the coordinates for spot lights' specular light intensity
+/// </summary>
+glm::vec3 spotlightSpecular = glm::vec3(0.5f, 0.5f, 0.5f);
+
+/// <summary>
+/// Indicates if spot lights are on
+/// </summary>
+bool spotLightsOn = true;
+
+/// <summary>
 /// Main function.
 /// </summary>
 /// <returns>An integer indicating whether the program ended successfully or not.
@@ -182,7 +217,8 @@ int main()
 	// --- Vertex specification ---
 	
 	// Set up the data for each vertex of the triangle
-	Vertex vertices[84+56334+2904+13984+11988];
+	/*Vertex vertices[84+56334+2904+13984+11988];*/
+	Vertex vertices[84];
 
 	// --- Room ---
 
@@ -1429,10 +1465,10 @@ int main()
 		glUniform3f(lightAmbientUniformLocation, 0.2f, 0.2f, 0.2f);
 
 		GLint lightDiffuseUniformLocation = glGetUniformLocation(program, "lightDiffuse");
-		glUniform3f(lightDiffuseUniformLocation, 0.8f, 0.8f, 0.8f);
+		glUniform3f(lightDiffuseUniformLocation, lightDiffuse.x, lightDiffuse.y, lightDiffuse.z);
 
 		GLint lightSpecularUniformLocation = glGetUniformLocation(program, "lightSpecular");
-		glUniform3f(lightSpecularUniformLocation, 0.5f, 0.5f, 0.5f);
+		glUniform3f(lightSpecularUniformLocation, lightSpecular.x, lightSpecular.y, lightSpecular.z);
 
 		// Uniform variables for spot light
 		GLint spotlightPosition0UniformLocation = glGetUniformLocation(program, "spotlightPosition[0]");
@@ -1448,13 +1484,13 @@ int main()
 		glUniform3f(spotlightPosition3UniformLocation, 10.0f, 20.0f, -10.0f);
 
 		GLint spotlightAmbientUniformLocation = glGetUniformLocation(program, "spotlightAmbient");
-		glUniform3f(spotlightAmbientUniformLocation, 0.2f, 0.2f, 0.1f);
+		glUniform3f(spotlightAmbientUniformLocation, spotlightAmbient.x, spotlightAmbient.y, spotlightAmbient.z);
 
 		GLint spotlightDiffuseUniformLocation = glGetUniformLocation(program, "spotlightDiffuse");
-		glUniform3f(spotlightDiffuseUniformLocation, 0.8f, 0.8f, 0.05f);
+		glUniform3f(spotlightDiffuseUniformLocation, spotlightDiffuse.x, spotlightDiffuse.y, spotlightDiffuse.z);
 
 		GLint spotlightSpecularUniformLocation = glGetUniformLocation(program, "spotlightSpecular");
-		glUniform3f(spotlightSpecularUniformLocation, 0.5f, 0.5f, 0.5f);
+		glUniform3f(spotlightSpecularUniformLocation, spotlightSpecular.x, spotlightSpecular.y, spotlightSpecular.z);
 
 		GLint spotlightTargetUniformLocation = glGetUniformLocation(program, "spotlightTarget");
 		glUniform3f(spotlightTargetUniformLocation, 0.0f, -1.0f, 0.0f);
@@ -2253,8 +2289,8 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	previousX = cameraPosition.x;
 	previousZ = cameraPosition.z;
 
+	// Tell OpenGL to display the cursor if it is hidden and vice versa
 	if (action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
-		// Tell OpenGL to display the cursor if it is hidden and vice versa
 		if (!visibleCursor) {
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 			visibleCursor = true;
@@ -2262,6 +2298,36 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 		else {
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 			visibleCursor = false;
+		}
+	}
+
+	// Toggle point light on and off
+	if (action == GLFW_PRESS && key == GLFW_KEY_P) {
+		if (pointLightOn) {
+			lightDiffuse = glm::vec3(0.0f, 0.0f, 0.0f);
+			lightSpecular = glm::vec3(0.0f, 0.0f, 0.0f);
+			pointLightOn = false;
+		}
+		else {
+			lightDiffuse = glm::vec3(0.8f, 0.8f, 0.8f);
+			lightSpecular = glm::vec3(0.5f, 0.5f, 0.5f);
+			pointLightOn = true;
+		}
+	}
+
+	// Toggle spot lights on and off
+	if (action == GLFW_PRESS && key == GLFW_KEY_L) {
+		if (spotLightsOn) {
+			spotlightAmbient = glm::vec3(0.0f, 0.0f, 0.0f);
+			spotlightDiffuse = glm::vec3(0.0f, 0.0f, 0.0f);
+			spotlightSpecular = glm::vec3(0.0f, 0.0f, 0.0f);
+			spotLightsOn = false;
+		}
+		else {
+			spotlightAmbient = glm::vec3(0.2f, 0.2f, 0.1f);
+			spotlightDiffuse = glm::vec3(0.8f, 0.8f, 0.05f);
+			spotlightSpecular = glm::vec3(0.5f, 0.5f, 0.5f);
+			spotLightsOn = true;
 		}
 	}
 }
