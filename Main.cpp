@@ -215,10 +215,9 @@ int main()
 	}
 
 	// --- Vertex specification ---
-	
+
 	// Set up the data for each vertex of the triangle
-	/*Vertex vertices[84+56334+2904+13984+11988];*/
-	Vertex vertices[84];
+	Vertex vertices[84+56334+2904+13984+11988];
 
 	// --- Room ---
 
@@ -635,7 +634,7 @@ int main()
 
 	vertices[77].x = -0.75f;		vertices[77].y = 0.5f;			vertices[77].z = 0.0f;
 	vertices[77].r = 255;			vertices[77].g = 255;			vertices[77].b = 255;
-	vertices[77].u = 0.0f;			vertices[77].v = 1.0f;	
+	vertices[77].u = 0.0f;			vertices[77].v = 1.0f;
 	vertices[77].nx = 0.0f;			vertices[77].ny = 1.0f;			vertices[77].nz = 0.0f;
 
 	vertices[78].x = 0.75f;			vertices[78].y = 0.5f;			vertices[78].z = 0.0f;
@@ -680,55 +679,59 @@ int main()
 	int k1 = 0;
 	int l1 = 84;
 
-	FILE * file1 = fopen("3D-MODEL-Nefertiti-Bust.obj", "r");
-	if( file1 == NULL ){
-    	printf("Impossible to open the file !\n");
-    	return false;
+	FILE* file1 = fopen("3D-MODEL-Nefertiti-Bust.obj", "r");
+	if (file1 == NULL) {
+		printf("Impossible to open the file !\n");
+		return false;
 	}
 
-	while(1){
+	while (1) {
 		char lineHeader[128];
 		int res = fscanf(file1, "%s", lineHeader);
 
 		if (res == EOF)
 			break;
-		
-		if (strcmp(lineHeader, "v") == 0){
+
+		if (strcmp(lineHeader, "v") == 0) {
 			fscanf(file1, "%f %f %f\n", &vertXYZ[i1][0], &vertXYZ[i1][1], &vertXYZ[i1][2]);
 			i1 += 1;
-		} else if (strcmp(lineHeader, "vt") == 0){
+		}
+		else if (strcmp(lineHeader, "vt") == 0) {
 			fscanf(file1, "%f %f\n", &texUV[j1][0], &texUV[j1][1]);
 			j1 += 1;
-		} else if (strcmp(lineHeader, "vn") == 0){
+		}
+		else if (strcmp(lineHeader, "vn") == 0) {
 			fscanf(file1, "%f %f %f\n", &normXYZ[k1][0], &normXYZ[k1][1], &normXYZ[k1][2]);
 			k1 += 1;
-		} else if (strcmp(lineHeader, "f") == 0){
-            int v1, vt1, vn1, v2, vt2, vn2, v3, vt3, vn3;
+		}
+		else if (strcmp(lineHeader, "f") == 0) {
+			int v1, vt1, vn1, v2, vt2, vn2, v3, vt3, vn3;
 			int matches = fscanf(file1, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &v1, &vt1, &vn1, &v2, &vt2, &vn2, &v3, &vt3, &vn3);
-			if (matches != 9){
+			if (matches != 9) {
 				printf("File can't be read by our simple parser :-( Try exporting with other options\n");
 				fclose(file1);
 				return false;
 			}
-			vertices[l1].x = vertXYZ[v1-1][0];			vertices[l1].y = vertXYZ[v1-1][1];			vertices[l1].z = vertXYZ[v1-1][2];
+			vertices[l1].x = vertXYZ[v1 - 1][0];			vertices[l1].y = vertXYZ[v1 - 1][1];			vertices[l1].z = vertXYZ[v1 - 1][2];
 			vertices[l1].r = 255;						vertices[l1].g = 255;						vertices[l1].b = 255;
-			vertices[l1].u = texUV[vt1-1][0];			vertices[l1].v = texUV[vt1-1][1];
-			vertices[l1].nx = normXYZ[vn1-1][0];		vertices[l1].ny = normXYZ[vn1-1][1];		vertices[l1].nz = normXYZ[vn1-1][2];
-			
-			l1 += 1;
-			vertices[l1].x = vertXYZ[v2-1][0];			vertices[l1].y = vertXYZ[v2-1][1];			vertices[l1].z = vertXYZ[v2-1][2];
-			vertices[l1].r = 255;						vertices[l1].g = 255;						vertices[l1].b = 255;
-			vertices[l1].u = texUV[vt2-1][0];			vertices[l1].v = texUV[vt2-1][1];
-			vertices[l1].nx = normXYZ[vn2-1][0];		vertices[l1].ny = normXYZ[vn2-1][1];		vertices[l1].nz = normXYZ[vn2-1][2];
+			vertices[l1].u = texUV[vt1 - 1][0];			vertices[l1].v = texUV[vt1 - 1][1];
+			vertices[l1].nx = normXYZ[vn1 - 1][0];		vertices[l1].ny = normXYZ[vn1 - 1][1];		vertices[l1].nz = normXYZ[vn1 - 1][2];
 
 			l1 += 1;
-			vertices[l1].x = vertXYZ[v3-1][0];			vertices[l1].y = vertXYZ[v3-1][1];			vertices[l1].z = vertXYZ[v3-1][2];
+			vertices[l1].x = vertXYZ[v2 - 1][0];			vertices[l1].y = vertXYZ[v2 - 1][1];			vertices[l1].z = vertXYZ[v2 - 1][2];
 			vertices[l1].r = 255;						vertices[l1].g = 255;						vertices[l1].b = 255;
-			vertices[l1].u = texUV[vt3-1][0];			vertices[l1].v = texUV[vt3-1][1];
-			vertices[l1].nx = normXYZ[vn3-1][0];		vertices[l1].ny = normXYZ[vn3-1][1];		vertices[l1].nz = normXYZ[vn3-1][2];
+			vertices[l1].u = texUV[vt2 - 1][0];			vertices[l1].v = texUV[vt2 - 1][1];
+			vertices[l1].nx = normXYZ[vn2 - 1][0];		vertices[l1].ny = normXYZ[vn2 - 1][1];		vertices[l1].nz = normXYZ[vn2 - 1][2];
 
 			l1 += 1;
-		} else {
+			vertices[l1].x = vertXYZ[v3 - 1][0];			vertices[l1].y = vertXYZ[v3 - 1][1];			vertices[l1].z = vertXYZ[v3 - 1][2];
+			vertices[l1].r = 255;						vertices[l1].g = 255;						vertices[l1].b = 255;
+			vertices[l1].u = texUV[vt3 - 1][0];			vertices[l1].v = texUV[vt3 - 1][1];
+			vertices[l1].nx = normXYZ[vn3 - 1][0];		vertices[l1].ny = normXYZ[vn3 - 1][1];		vertices[l1].nz = normXYZ[vn3 - 1][2];
+
+			l1 += 1;
+		}
+		else {
 			char stupidBuffer[1000];
 			fgets(stupidBuffer, 1000, file1);
 		}
@@ -743,57 +746,61 @@ int main()
 	int i2 = 0;
 	int j2 = 0;
 	int k2 = 0;
-	int l2 = 84+56334;
+	int l2 = 84 + 56334;
 
-	FILE * file2 = fopen("3D-MODEL-Suzanne-Monkey.obj", "r");
-	if( file2 == NULL ){
-    	printf("Impossible to open the file !\n");
-    	return false;
+	FILE* file2 = fopen("3D-MODEL-Suzanne-Monkey.obj", "r");
+	if (file2 == NULL) {
+		printf("Impossible to open the file !\n");
+		return false;
 	}
 
-	while(1){
+	while (1) {
 		char lineHeader[128];
 		int res = fscanf(file2, "%s", lineHeader);
 
 		if (res == EOF)
 			break;
-		
-		if (strcmp(lineHeader, "v") == 0){
+
+		if (strcmp(lineHeader, "v") == 0) {
 			fscanf(file2, "%f %f %f\n", &vertXYZ2[i2][0], &vertXYZ2[i2][1], &vertXYZ2[i2][2]);
 			i2 += 1;
-		} else if (strcmp(lineHeader, "vt") == 0){
+		}
+		else if (strcmp(lineHeader, "vt") == 0) {
 			fscanf(file2, "%f %f\n", &texUV2[j2][0], &texUV[j2][1]);
 			j2 += 1;
-		} else if (strcmp(lineHeader, "vn") == 0){
+		}
+		else if (strcmp(lineHeader, "vn") == 0) {
 			fscanf(file2, "%f %f %f\n", &normXYZ2[k2][0], &normXYZ2[k2][1], &normXYZ2[k2][2]);
 			k2 += 1;
-		} else if (strcmp(lineHeader, "f") == 0){
-            int v1, vt1, vn1, v2, vt2, vn2, v3, vt3, vn3;
+		}
+		else if (strcmp(lineHeader, "f") == 0) {
+			int v1, vt1, vn1, v2, vt2, vn2, v3, vt3, vn3;
 			int matches = fscanf(file2, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &v1, &vt1, &vn1, &v2, &vt2, &vn2, &v3, &vt3, &vn3);
-			if (matches != 9){
+			if (matches != 9) {
 				printf("File can't be read by our simple parser :-( Try exporting with other options\n");
 				fclose(file2);
 				return false;
 			}
-			vertices[l2].x = vertXYZ2[v1-1][0];			vertices[l2].y = vertXYZ2[v1-1][1];			vertices[l2].z = vertXYZ2[v1-1][2];
+			vertices[l2].x = vertXYZ2[v1 - 1][0];			vertices[l2].y = vertXYZ2[v1 - 1][1];			vertices[l2].z = vertXYZ2[v1 - 1][2];
 			vertices[l2].r = 255;						vertices[l2].g = 255;						vertices[l2].b = 255;
-			vertices[l2].u = texUV2[vt1-1][0];			vertices[l2].v = texUV2[vt1-1][1];
-			vertices[l2].nx = normXYZ2[vn1-1][0];		vertices[l2].ny = normXYZ2[vn1-1][1];		vertices[l2].nz = normXYZ2[vn1-1][2];
-			
-			l2 += 1;
-			vertices[l2].x = vertXYZ2[v2-1][0];			vertices[l2].y = vertXYZ2[v2-1][1];			vertices[l2].z = vertXYZ2[v2-1][2];
-			vertices[l2].r = 255;						vertices[l2].g = 255;						vertices[l2].b = 255;
-			vertices[l2].u = texUV2[vt2-1][0];			vertices[l2].v = texUV2[vt2-1][1];
-			vertices[l2].nx = normXYZ2[vn2-1][0];		vertices[l2].ny = normXYZ2[vn2-1][1];		vertices[l2].nz = normXYZ2[vn2-1][2];
+			vertices[l2].u = texUV2[vt1 - 1][0];			vertices[l2].v = texUV2[vt1 - 1][1];
+			vertices[l2].nx = normXYZ2[vn1 - 1][0];		vertices[l2].ny = normXYZ2[vn1 - 1][1];		vertices[l2].nz = normXYZ2[vn1 - 1][2];
 
 			l2 += 1;
-			vertices[l2].x = vertXYZ2[v3-1][0];			vertices[l2].y = vertXYZ2[v3-1][1];			vertices[l2].z = vertXYZ2[v3-1][2];
+			vertices[l2].x = vertXYZ2[v2 - 1][0];			vertices[l2].y = vertXYZ2[v2 - 1][1];			vertices[l2].z = vertXYZ2[v2 - 1][2];
 			vertices[l2].r = 255;						vertices[l2].g = 255;						vertices[l2].b = 255;
-			vertices[l2].u = texUV2[vt3-1][0];			vertices[l2].v = texUV2[vt3-1][1];
-			vertices[l2].nx = normXYZ2[vn3-1][0];		vertices[l2].ny = normXYZ2[vn3-1][1];		vertices[l2].nz = normXYZ2[vn3-1][2];
+			vertices[l2].u = texUV2[vt2 - 1][0];			vertices[l2].v = texUV2[vt2 - 1][1];
+			vertices[l2].nx = normXYZ2[vn2 - 1][0];		vertices[l2].ny = normXYZ2[vn2 - 1][1];		vertices[l2].nz = normXYZ2[vn2 - 1][2];
 
 			l2 += 1;
-		} else {
+			vertices[l2].x = vertXYZ2[v3 - 1][0];			vertices[l2].y = vertXYZ2[v3 - 1][1];			vertices[l2].z = vertXYZ2[v3 - 1][2];
+			vertices[l2].r = 255;						vertices[l2].g = 255;						vertices[l2].b = 255;
+			vertices[l2].u = texUV2[vt3 - 1][0];			vertices[l2].v = texUV2[vt3 - 1][1];
+			vertices[l2].nx = normXYZ2[vn3 - 1][0];		vertices[l2].ny = normXYZ2[vn3 - 1][1];		vertices[l2].nz = normXYZ2[vn3 - 1][2];
+
+			l2 += 1;
+		}
+		else {
 			char stupidBuffer[1000];
 			fgets(stupidBuffer, 1000, file2);
 		}
@@ -809,63 +816,67 @@ int main()
 	int i3 = 0;
 	int j3 = 0;
 	int k3 = 0;
-	int l3 = 84+56334+2904;
+	int l3 = 84 + 56334 + 2904;
 
-	FILE * file3 = fopen("3D-MODEL-Asian-Vase.obj", "r");
-	if( file3 == NULL ){
-    	printf("Impossible to open the file !\n");
-    	return false;
+	FILE* file3 = fopen("3D-MODEL-Asian-Vase.obj", "r");
+	if (file3 == NULL) {
+		printf("Impossible to open the file !\n");
+		return false;
 	}
 
-	while(1){
+	while (1) {
 		char lineHeader[128];
 		int res = fscanf(file3, "%s", lineHeader);
 
 		if (res == EOF)
 			break;
-		
-		if (strcmp(lineHeader, "v") == 0){
+
+		if (strcmp(lineHeader, "v") == 0) {
 			fscanf(file3, "%f %f %f\n", &vertXYZ3[i3][0], &vertXYZ3[i3][1], &vertXYZ3[i3][2]);
 			i3 += 1;
-		} else if (strcmp(lineHeader, "vt") == 0){
+		}
+		else if (strcmp(lineHeader, "vt") == 0) {
 			fscanf(file3, "%f %f %d\n", &texUV3[j3][0], &texUV3[j3][1], &texW);
 			j3 += 1;
-		} else if (strcmp(lineHeader, "vn") == 0){
+		}
+		else if (strcmp(lineHeader, "vn") == 0) {
 			fscanf(file3, "%f %f %f\n", &normXYZ3[k3][0], &normXYZ3[k3][1], &normXYZ3[k3][2]);
 			k3 += 1;
-		} else if (strcmp(lineHeader, "f") == 0){
-            int v1, vt1, vn1, v2, vt2, vn2, v3, vt3, vn3, v4, vt4, vn4;
+		}
+		else if (strcmp(lineHeader, "f") == 0) {
+			int v1, vt1, vn1, v2, vt2, vn2, v3, vt3, vn3, v4, vt4, vn4;
 			int matches = fscanf(file3, "%d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d\n", &v1, &vt1, &vn1, &v2, &vt2, &vn2, &v3, &vt3, &vn3, &v4, &vt4, &vn4);
-			if (matches != 12){
+			if (matches != 12) {
 				printf("File can't be read by our simple parser :-( Try exporting with other options\n");
 				fclose(file3);
 				return false;
 			}
-			vertices[l3].x = vertXYZ3[v1-1][0];			vertices[l3].y = vertXYZ3[v1-1][1];			vertices[l3].z = vertXYZ3[v1-1][2];
+			vertices[l3].x = vertXYZ3[v1 - 1][0];			vertices[l3].y = vertXYZ3[v1 - 1][1];			vertices[l3].z = vertXYZ3[v1 - 1][2];
 			vertices[l3].r = 255;						vertices[l3].g = 255;						vertices[l3].b = 255;
-			vertices[l3].u = texUV3[vt1-1][0];			vertices[l3].v = texUV3[vt1-1][1];
-			vertices[l3].nx = normXYZ3[vn1-1][0];		vertices[l3].ny = normXYZ3[vn1-1][1];		vertices[l3].nz = normXYZ3[vn1-1][2];
-			
-			l3 += 1;
-			vertices[l3].x = vertXYZ3[v2-1][0];			vertices[l3].y = vertXYZ3[v2-1][1];			vertices[l3].z = vertXYZ3[v2-1][2];
-			vertices[l3].r = 255;						vertices[l3].g = 255;						vertices[l3].b = 255;
-			vertices[l3].u = texUV3[vt2-1][0];			vertices[l3].v = texUV3[vt2-1][1];
-			vertices[l3].nx = normXYZ3[vn2-1][0];		vertices[l3].ny = normXYZ3[vn2-1][1];		vertices[l3].nz = normXYZ3[vn2-1][2];
+			vertices[l3].u = texUV3[vt1 - 1][0];			vertices[l3].v = texUV3[vt1 - 1][1];
+			vertices[l3].nx = normXYZ3[vn1 - 1][0];		vertices[l3].ny = normXYZ3[vn1 - 1][1];		vertices[l3].nz = normXYZ3[vn1 - 1][2];
 
 			l3 += 1;
-			vertices[l3].x = vertXYZ3[v3-1][0];			vertices[l3].y = vertXYZ3[v3-1][1];			vertices[l3].z = vertXYZ3[v3-1][2];
+			vertices[l3].x = vertXYZ3[v2 - 1][0];			vertices[l3].y = vertXYZ3[v2 - 1][1];			vertices[l3].z = vertXYZ3[v2 - 1][2];
 			vertices[l3].r = 255;						vertices[l3].g = 255;						vertices[l3].b = 255;
-			vertices[l3].u = texUV3[vt3-1][0];			vertices[l3].v = texUV3[vt3-1][1];
-			vertices[l3].nx = normXYZ3[vn3-1][0];		vertices[l3].ny = normXYZ3[vn3-1][1];		vertices[l3].nz = normXYZ3[vn3-1][2];
+			vertices[l3].u = texUV3[vt2 - 1][0];			vertices[l3].v = texUV3[vt2 - 1][1];
+			vertices[l3].nx = normXYZ3[vn2 - 1][0];		vertices[l3].ny = normXYZ3[vn2 - 1][1];		vertices[l3].nz = normXYZ3[vn2 - 1][2];
 
 			l3 += 1;
-			vertices[l3].x = vertXYZ3[v4-1][0];			vertices[l3].y = vertXYZ3[v4-1][1];			vertices[l3].z = vertXYZ3[v4-1][2];
+			vertices[l3].x = vertXYZ3[v3 - 1][0];			vertices[l3].y = vertXYZ3[v3 - 1][1];			vertices[l3].z = vertXYZ3[v3 - 1][2];
 			vertices[l3].r = 255;						vertices[l3].g = 255;						vertices[l3].b = 255;
-			vertices[l3].u = texUV3[vt4-1][0];			vertices[l3].v = texUV3[vt4-1][1];
-			vertices[l3].nx = normXYZ3[vn4-1][0];		vertices[l3].ny = normXYZ3[vn4-1][1];		vertices[l3].nz = normXYZ3[vn4-1][2];
+			vertices[l3].u = texUV3[vt3 - 1][0];			vertices[l3].v = texUV3[vt3 - 1][1];
+			vertices[l3].nx = normXYZ3[vn3 - 1][0];		vertices[l3].ny = normXYZ3[vn3 - 1][1];		vertices[l3].nz = normXYZ3[vn3 - 1][2];
 
 			l3 += 1;
-		} else {
+			vertices[l3].x = vertXYZ3[v4 - 1][0];			vertices[l3].y = vertXYZ3[v4 - 1][1];			vertices[l3].z = vertXYZ3[v4 - 1][2];
+			vertices[l3].r = 255;						vertices[l3].g = 255;						vertices[l3].b = 255;
+			vertices[l3].u = texUV3[vt4 - 1][0];			vertices[l3].v = texUV3[vt4 - 1][1];
+			vertices[l3].nx = normXYZ3[vn4 - 1][0];		vertices[l3].ny = normXYZ3[vn4 - 1][1];		vertices[l3].nz = normXYZ3[vn4 - 1][2];
+
+			l3 += 1;
+		}
+		else {
 			char stupidBuffer[1000];
 			fgets(stupidBuffer, 1000, file3);
 		}
@@ -880,63 +891,67 @@ int main()
 	int i4 = 0;
 	int j4 = 0;
 	int k4 = 0;
-	int l4 = 84+56334+2904+13984;
+	int l4 = 84 + 56334 + 2904 + 13984;
 
-	FILE * file4 = fopen("3D-MODEL-Jaguar-Skull.obj", "r");
-	if( file4 == NULL ){
-    	printf("Impossible to open the file !\n");
-    	return false;
+	FILE* file4 = fopen("3D-MODEL-Jaguar-Skull.obj", "r");
+	if (file4 == NULL) {
+		printf("Impossible to open the file !\n");
+		return false;
 	}
 
-	while(1){
+	while (1) {
 		char lineHeader[128];
 		int res = fscanf(file4, "%s", lineHeader);
 
 		if (res == EOF)
 			break;
-		
-		if (strcmp(lineHeader, "v") == 0){
+
+		if (strcmp(lineHeader, "v") == 0) {
 			fscanf(file4, "%f %f %f\n", &vertXYZ4[i4][0], &vertXYZ4[i4][1], &vertXYZ4[i4][2]);
 			i4 += 1;
-		} else if (strcmp(lineHeader, "vt") == 0){
+		}
+		else if (strcmp(lineHeader, "vt") == 0) {
 			fscanf(file4, "%f %f\n", &texUV4[j4][0], &texUV4[j4][1]);
 			j4 += 1;
-		} else if (strcmp(lineHeader, "vn") == 0){
+		}
+		else if (strcmp(lineHeader, "vn") == 0) {
 			fscanf(file4, "%f %f %f\n", &normXYZ4[k4][0], &normXYZ4[k4][1], &normXYZ4[k4][2]);
 			k4 += 1;
-		} else if (strcmp(lineHeader, "f") == 0){
-            int v1, vt1, vn1, v2, vt2, vn2, v3, vt3, vn3, v4, vt4, vn4;
+		}
+		else if (strcmp(lineHeader, "f") == 0) {
+			int v1, vt1, vn1, v2, vt2, vn2, v3, vt3, vn3, v4, vt4, vn4;
 			int matches = fscanf(file4, "%d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d\n", &v1, &vt1, &vn1, &v2, &vt2, &vn2, &v3, &vt3, &vn3, &v4, &vt4, &vn4);
-			if (matches > 12){
+			if (matches > 12) {
 				printf("File can't be read by our simple parser :-( Try exporting with other options\n");
 				fclose(file4);
 				return false;
 			}
-			vertices[l4].x = vertXYZ4[v1-1][0];			vertices[l4].y = vertXYZ4[v1-1][1];			vertices[l4].z = vertXYZ4[v1-1][2];
+			vertices[l4].x = vertXYZ4[v1 - 1][0];			vertices[l4].y = vertXYZ4[v1 - 1][1];			vertices[l4].z = vertXYZ4[v1 - 1][2];
 			vertices[l4].r = 255;						vertices[l4].g = 255;						vertices[l4].b = 255;
-			vertices[l4].u = texUV4[vt1-1][0];			vertices[l4].v = texUV4[vt1-1][1];
-			vertices[l4].nx = normXYZ4[vn1-1][0];		vertices[l4].ny = normXYZ4[vn1-1][1];		vertices[l4].nz = normXYZ4[vn1-1][2];
-			
-			l4 += 1;
-			vertices[l4].x = vertXYZ4[v2-1][0];			vertices[l4].y = vertXYZ4[v2-1][1];			vertices[l4].z = vertXYZ4[v2-1][2];
-			vertices[l4].r = 255;						vertices[l4].g = 255;						vertices[l4].b = 255;
-			vertices[l4].u = texUV4[vt2-1][0];			vertices[l4].v = texUV4[vt2-1][1];
-			vertices[l4].nx = normXYZ4[vn2-1][0];		vertices[l4].ny = normXYZ4[vn2-1][1];		vertices[l4].nz = normXYZ4[vn2-1][2];
+			vertices[l4].u = texUV4[vt1 - 1][0];			vertices[l4].v = texUV4[vt1 - 1][1];
+			vertices[l4].nx = normXYZ4[vn1 - 1][0];		vertices[l4].ny = normXYZ4[vn1 - 1][1];		vertices[l4].nz = normXYZ4[vn1 - 1][2];
 
 			l4 += 1;
-			vertices[l4].x = vertXYZ4[v3-1][0];			vertices[l4].y = vertXYZ4[v3-1][1];			vertices[l4].z = vertXYZ4[v3-1][2];
+			vertices[l4].x = vertXYZ4[v2 - 1][0];			vertices[l4].y = vertXYZ4[v2 - 1][1];			vertices[l4].z = vertXYZ4[v2 - 1][2];
 			vertices[l4].r = 255;						vertices[l4].g = 255;						vertices[l4].b = 255;
-			vertices[l4].u = texUV4[vt3-1][0];			vertices[l4].v = texUV4[vt3-1][1];
-			vertices[l4].nx = normXYZ4[vn3-1][0];		vertices[l4].ny = normXYZ4[vn3-1][1];		vertices[l4].nz = normXYZ4[vn3-1][2];
+			vertices[l4].u = texUV4[vt2 - 1][0];			vertices[l4].v = texUV4[vt2 - 1][1];
+			vertices[l4].nx = normXYZ4[vn2 - 1][0];		vertices[l4].ny = normXYZ4[vn2 - 1][1];		vertices[l4].nz = normXYZ4[vn2 - 1][2];
 
 			l4 += 1;
-			vertices[l4].x = vertXYZ4[v4-1][0];			vertices[l4].y = vertXYZ4[v4-1][1];			vertices[l4].z = vertXYZ4[v4-1][2];
+			vertices[l4].x = vertXYZ4[v3 - 1][0];			vertices[l4].y = vertXYZ4[v3 - 1][1];			vertices[l4].z = vertXYZ4[v3 - 1][2];
 			vertices[l4].r = 255;						vertices[l4].g = 255;						vertices[l4].b = 255;
-			vertices[l4].u = texUV4[vt4-1][0];			vertices[l4].v = texUV4[vt4-1][1];
-			vertices[l4].nx = normXYZ4[vn4-1][0];		vertices[l4].ny = normXYZ4[vn4-1][1];		vertices[l4].nz = normXYZ4[vn4-1][2];
+			vertices[l4].u = texUV4[vt3 - 1][0];			vertices[l4].v = texUV4[vt3 - 1][1];
+			vertices[l4].nx = normXYZ4[vn3 - 1][0];		vertices[l4].ny = normXYZ4[vn3 - 1][1];		vertices[l4].nz = normXYZ4[vn3 - 1][2];
 
 			l4 += 1;
-		} else {
+			vertices[l4].x = vertXYZ4[v4 - 1][0];			vertices[l4].y = vertXYZ4[v4 - 1][1];			vertices[l4].z = vertXYZ4[v4 - 1][2];
+			vertices[l4].r = 255;						vertices[l4].g = 255;						vertices[l4].b = 255;
+			vertices[l4].u = texUV4[vt4 - 1][0];			vertices[l4].v = texUV4[vt4 - 1][1];
+			vertices[l4].nx = normXYZ4[vn4 - 1][0];		vertices[l4].ny = normXYZ4[vn4 - 1][1];		vertices[l4].nz = normXYZ4[vn4 - 1][2];
+
+			l4 += 1;
+		}
+		else {
 			char stupidBuffer[1000];
 			fgets(stupidBuffer, 1000, file4);
 		}
@@ -956,7 +971,7 @@ int main()
 	glBindVertexArray(vao);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	
+
 	// Vertex attribute 0 - Position
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, x));
@@ -968,7 +983,7 @@ int main()
 	// Vertex attribute 2 - UV Coordinates
 	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(offsetof(Vertex, u)));
-	
+
 	// Vertex attribute 3 - Normal Vector
 	glEnableVertexAttribArray(3);
 	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(offsetof(Vertex, nx)));
@@ -984,7 +999,7 @@ int main()
 
 
 	// Textures
-	
+
 	// --- Room Textures ---
 
 	// Create a variable that will contain the ID for our texture,
@@ -1959,8 +1974,8 @@ int main()
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, -12.0f, 10.0f));
-		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.1f/6.0f, 0.1f/6.0f, 0.1f/6.0f));
+		model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f / 6.0f, 0.1f / 6.0f, 0.1f / 6.0f));
 
 		// Normal Matrix
 		normal = glm::transpose(glm::inverse(model));
@@ -1974,9 +1989,9 @@ int main()
 
 		// Draw the vertices using triangle primitives
 		int i = 84;
-		while (i!=84+56334){
+		while (i != 84 + 56334) {
 			glDrawArrays(GL_TRIANGLES, i, 3);
-			i+=3;
+			i += 3;
 		}
 
 		// --- Suzanne Monkey ---
@@ -1991,7 +2006,7 @@ int main()
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(10.0f, -13.5f, 10.0f));
-		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 
 		// Normal Matrix
@@ -2005,10 +2020,10 @@ int main()
 		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
 
 		// Draw the vertices using triangle primitives
-		i = 84+56334;
-		while (i!=84+56334+2904){
+		i = 84 + 56334;
+		while (i != 84 + 56334 + 2904) {
 			glDrawArrays(GL_TRIANGLES, i, 3);
-			i+=3;
+			i += 3;
 		}
 
 		// --- Asian Vase ---
@@ -2023,8 +2038,8 @@ int main()
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, -16.0f, -10.0f));
-		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.7f/40.0f, 0.7f/40.0f, 0.7f/40.0f));
+		model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.7f / 40.0f, 0.7f / 40.0f, 0.7f / 40.0f));
 
 		// Normal Matrix
 		normal = glm::transpose(glm::inverse(model));
@@ -2037,10 +2052,10 @@ int main()
 		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
 
 		// Draw the vertices using triangle primitives
-		i = 84+56334+2904;
-		while (i!=84+56334+2904+13984){
+		i = 84 + 56334 + 2904;
+		while (i != 84 + 56334 + 2904 + 13984) {
 			glDrawArrays(GL_TRIANGLE_FAN, i, 4);
-			i+=4;
+			i += 4;
 		}
 
 		// --- Jaguar Skull ---
@@ -2055,7 +2070,7 @@ int main()
 
 		// Model Matrix
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(10.0f, -15.5f, -10.0f));
-		model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 4.8f));
 
 		// Normal Matrix
@@ -2069,10 +2084,10 @@ int main()
 		glUniformMatrix4fv(normMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(normal));
 
 		// Draw the vertices using triangle primitives
-		i = 84+56334+2904+13984;
-		while (i!=84+56334+2904+13984+11988){
+		i = 84 + 56334 + 2904 + 13984;
+		while (i != 84 + 56334 + 2904 + 13984 + 11988) {
 			glDrawArrays(GL_TRIANGLE_FAN, i, 4);
-			i+=4;
+			i += 4;
 		}
 
 		// "Unuse" the vertex array object
